@@ -1,0 +1,60 @@
+import blockContent from './blockContent'
+
+import person from './person/person'
+import teachingSubjectItem from './person/teachingSubjectItem'
+import responsibilities from './responsibilities'
+import news from './news/news'
+import newsList from './news/newsList'
+// import newsTemp from './news/newsTemp'
+
+import chapAbout from './chapAbout'
+import chapAboutMTB from './chapAboutMTB'
+import chapSpecialities from './chapSpecialities'
+import chapBachel from './chapBachel'
+import chapMaster from './chapMaster'
+import chapSpecialitiesSH from './chapSpecialitiesSH'
+import chapMasterEPP from './chapMasterEPP'
+import chapBachelEPP from './chapBachelEPP'
+import chapEntrant from './chapEntrant'
+import chapScience from './chapScience'
+import chapPostgradStudy from './chapPostgradStudy'
+import chapInternatinalActivity from './chapInternatinalActivity'
+import chapEducationalActivity from './chapEducationalActivity'
+import chapReferences from './chapReferences'
+import chapIntresting from './chapIntresting'
+import secretPage from './secretPage'
+import youtube from './youtube'
+// import siteSettings from './siteSettings'
+// import deskStructure from './deskStructure'
+
+export const schemaTypes = [
+  // Document types
+  person,
+  teachingSubjectItem,
+  news,
+  // newsTemp,
+  newsList,
+  responsibilities,
+
+  chapAbout,
+  chapAboutMTB,
+  chapSpecialities,
+  chapSpecialitiesSH,
+  chapBachel,
+  chapBachelEPP,
+  chapMaster,
+  chapMasterEPP,
+  chapEntrant,
+  chapScience,
+  chapPostgradStudy,
+  chapInternatinalActivity,
+  chapEducationalActivity,
+  chapReferences,
+  chapIntresting,
+  secretPage,
+
+  // Other types
+  blockContent,
+  youtube,
+]
+
