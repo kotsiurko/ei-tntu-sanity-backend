@@ -3,7 +3,7 @@ import { MdBuild as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'intresting',
-  title: 'Сторінки "Це цікаво"',
+  title: 'Це цікаво',
   type: 'document',
   icon,
   groups: [

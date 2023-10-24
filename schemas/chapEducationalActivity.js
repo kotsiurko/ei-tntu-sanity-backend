@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'educational-activity',
-  title: 'Сторінки "Виховна діяльність"',
+  title: 'Виховна діяльність',
   type: 'document',
   icon,
   groups: [

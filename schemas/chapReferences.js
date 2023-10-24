@@ -3,7 +3,7 @@ import { MdBuild as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'references',
-  title: 'Сторінки "Посилання"',
+  title: 'Посилання',
   type: 'document',
   icon,
   groups: [

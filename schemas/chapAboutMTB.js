@@ -3,7 +3,7 @@ import { MdAccountBalance as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'about-mtb',
-  title: 'Сторінки "Про кафедру/Матеріально-технічна база"',
+  title: 'Про кафедру/Матеріально-технічна база',
   type: 'document',
   icon,
   groups: [

@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'postgraduate',
-  title: 'Сторінки "Аспірантура"',
+  title: 'Аспірантура',
   type: 'document',
   icon,
   groups: [

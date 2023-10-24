@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'science',
-  title: 'Сторінки "Наука"',
+  title: 'Наука',
   type: 'document',
   icon,
   groups: [

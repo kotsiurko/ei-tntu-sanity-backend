@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'international-activity',
-  title: 'Сторінки "Міжнародна діяльність"',
+  title: 'Міжнародна діяльність',
   type: 'document',
   icon,
   groups: [

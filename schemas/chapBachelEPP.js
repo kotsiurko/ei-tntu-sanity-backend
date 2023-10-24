@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'bachelor-epp',
-  title: 'Сторінки "Бакалавру / Освітньо-професійні програми"',
+  title: 'Бакалавру / Освітньо-професійні програми',
   type: 'document',
   icon,
   groups: [
@@ -59,6 +59,16 @@ export default defineType({
       type: 'blockContent',
       group: "content",
     }),
+
+    defineField({
+      name: 'personReferences',
+      title: 'Гарант ОПП',
+      type: 'array',
+      group: "content",
+      of: [{ type: 'reference', to: { type: 'person' } }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/educational-and-professional-programs/educational-programs',
+    }),
+
   ],
 
   orderings: [

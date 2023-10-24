@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'master',
-  title: 'Сторінки "Магістру"',
+  title: 'Магістру',
   type: 'document',
   icon,
   groups: [

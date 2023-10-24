@@ -3,7 +3,7 @@ import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'master-epp',
-  title: 'Сторінки "Магістру / Освітньо-професійні програми"',
+  title: 'Магістру / Освітньо-професійні програми',
   type: 'document',
   icon,
   groups: [
@@ -57,6 +57,15 @@ export default defineType({
       title: 'Структура',
       type: 'blockContent',
       group: "content",
+    }),
+
+    defineField({
+      name: 'personReferences',
+      title: 'Гарант ОПП',
+      type: 'array',
+      group: "content",
+      of: [{ type: 'reference', to: { type: 'person' } }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/educational-and-professional-programs/educational-programs',
     }),
   ],
 

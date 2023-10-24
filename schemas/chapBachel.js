@@ -3,7 +3,7 @@ import { MdSentimentNeutral as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'bachelor',
-  title: 'Сторінки "Бакалавру"',
+  title: 'Бакалавру',
   type: 'document',
   icon,
   groups: [
@@ -64,10 +64,8 @@ export default defineType({
       name: 'docURL',
       type: 'string',
       group: "content",
-      // readOnly: true,
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/сonsultations',
     },
-    // hidden: ({ document }) => document && document.slug && document.slug.current !== '/entrant/schools-cooperation',
 
     {
       title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',

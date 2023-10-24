@@ -3,7 +3,7 @@ import { MdBuild as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'specialities',
-  title: 'Сторінки "Спеціальності"',
+  title: 'Спеціальності',
   type: 'document',
   icon,
   groups: [

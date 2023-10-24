@@ -35,14 +35,14 @@ export default defineType({
         collapsible: true,
         collapsed: false,
       },
-      fields: [
-        {
-          name: 'caption',
-          type: 'string',
-          title: 'Підпис до зображення',
-        },
-      ],
-      description: "Для економії місця можна згорнути поле. Співвідношення сторін фото має бути 3х4, і розміром не менше як 640х850px",
+      // fields: [
+      //   {
+      //     name: 'caption',
+      //     type: 'string',
+      //     title: 'Підпис до зображення',
+      //   },
+      // ],
+      description: "Співвідношення сторін фото має бути 3х4, і розміром не менше як 640х850px",
     }),
 
 
@@ -50,7 +50,7 @@ export default defineType({
       name: 'sciDegree',
       title: "Науковий ступінь",
       type: 'string',
-      options: { list: ['к.т.н.', 'доктор наук / ph.D', 'д.т.н.', 'Немає'], layout: 'radio', direction: 'horizontal' },
+      options: { list: ['к.т.н.', 'доктор філософії / ph.D', 'д.т.н.', 'Немає'], layout: 'radio', direction: 'horizontal' },
     }),
 
     defineField({
@@ -63,16 +63,32 @@ export default defineType({
     defineField({
       name: 'position',
       title: "Посада",
-      type: 'object',
-      fields: [
-        { name: 'long', type: 'string', title: 'Повністю' },
-        { name: 'short', type: 'string', title: 'Скорочено', description: 'Відображається на сторінці колективу, в картці працівника', },
-      ],
+      type: 'string',
       options: {
-        collapsible: true,
-        collapsed: true,
+        list: [
+          'завідувач кафедрою',
+          'заступник завідувача кафедрою',
+          'професор',
+          'доцент',
+          'старший викладач',
+          'викладач',
+          'асистент',
+          'провідний інженер',
+          'інженер 2-ї категорії',
+          'інженер 1-ї категорії',
+          'лаборант',
+        ], layout: 'radio', direction: 'horizontal'
       },
-      description: 'Розгорніть, щоб заповнити чи переглянути поля',
+      // type: 'object',
+      // fields: [
+      //   { name: 'long', type: 'string', title: 'Повністю' },
+      //   { name: 'short', type: 'string', title: 'Скорочено', description: 'Відображається на сторінці колективу, в картці працівника', },
+      // ],
+      // options: {
+      //   collapsible: true,
+      //   collapsed: true,
+      // },
+      // description: 'Розгорніть, щоб заповнити чи переглянути поля',
     }),
 
     defineField({
@@ -103,34 +119,12 @@ export default defineType({
       options: { collapsible: true, collapsed: true },
     }),
 
-    // defineField({
-    //   name: 'education',
-    //   title: 'Освіта',
-    //   type: 'array',
-    //   of: [{
-    //     type: 'object',
-    //     fields: [
-    //       {
-    //         name: 'university',
-    //         type: 'string',
-    //         title: 'Навчальний заклад',
-    //         description: "Рекомендований формат запису: 'Тернопільський національний технічний університет імені Івана Пулюя, 2007-2011'",
-    //       },
-    //       {
-    //         name: 'description',
-    //         type: 'blockContent',
-    //         title: 'Опис здобутих освітніх чи наукових ступенів'
-    //       },
-    //     ],
-    //   }],
-    // }),
+
     defineField({
       name: 'education',
       title: 'Освіта',
       type: 'array',
       of: [{ type: 'educationItem' }],
-      // of: [{ type: 'repeatingLists' }],
-      // description: "Введіть місце попередньої роботи",
     }),
 
     // defineField({
@@ -366,9 +360,9 @@ export default defineType({
     prepare(selection) {
       console.log('selection Person:>> ', selection);
       const { firstName, secondName, fatherName, media, position, weight, sciDegree, acadStatus } = selection;
-      const sub = acadStatus.toLowerCase() === position.short.toLowerCase()
-        ? `${weight} / ${sciDegree}, ${position.short}`
-        : `${weight} / ${sciDegree}, ${acadStatus}, ${position.short}`
+      const sub = acadStatus.toLowerCase() === position.toLowerCase()
+        ? `${weight} / ${sciDegree}, ${position}`
+        : `${weight} / ${sciDegree}, ${acadStatus}, ${position}`
       return {
         title: `${firstName} ${secondName} ${fatherName}`,
         media: media,
