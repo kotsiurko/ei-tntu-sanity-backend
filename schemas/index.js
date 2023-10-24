@@ -24,6 +24,8 @@ import chapReferences from './chapReferences'
 import chapIntresting from './chapIntresting'
 import secretPage from './secretPage'
 import youtube from './youtube'
+import experienceItem from './person/experienceItem'
+import educationItem from './person/educationItem'
 // import siteSettings from './siteSettings'
 // import deskStructure from './deskStructure'
 
@@ -31,6 +33,8 @@ export const schemaTypes = [
   // Document types
   person,
   teachingSubjectItem,
+  experienceItem,
+  educationItem,
   news,
   // newsTemp,
   newsList,

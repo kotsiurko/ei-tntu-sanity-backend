@@ -12,39 +12,18 @@ export default defineType({
       name: 'firstName',
       title: "Прізвище",
       type: 'string',
-      description: "Введіть прізвище",
     }),
 
     defineField({
       name: 'secondName',
       title: "Ім'я",
       type: 'string',
-      description: "Введіть ім'я",
     }),
 
     defineField({
       name: 'fatherName',
       title: "По батькові",
       type: 'string',
-      description: "Введіть ім'я по батькові",
-    }),
-
-    defineField({
-      name: 'weight',
-      title: "Вага посади",
-      type: 'number',
-      description: 'Службове поле для впорядкованого відображення працівників на сторінці. Як сформувати - https://docs.google.com/spreadsheets/d/1-JnXn06rz5dKPnhyvNcqLwkpdFM9p6MZ989cWkzZe8Q/edit?usp=sharing',
-    }),
-
-    defineField({
-      name: 'slug',
-      title: 'Транслітероване відносне посилання',
-      type: 'slug',
-      options: {
-        source: 'firstName',
-        maxLength: 100,
-      },
-      description: 'Натисніть GENERATE і посилання автоматично сформується на основі прізвища. При потребі, ви можете його відредагувати',
     }),
 
     defineField({
@@ -124,27 +103,34 @@ export default defineType({
       options: { collapsible: true, collapsed: true },
     }),
 
+    // defineField({
+    //   name: 'education',
+    //   title: 'Освіта',
+    //   type: 'array',
+    //   of: [{
+    //     type: 'object',
+    //     fields: [
+    //       {
+    //         name: 'university',
+    //         type: 'string',
+    //         title: 'Навчальний заклад',
+    //         description: "Рекомендований формат запису: 'Тернопільський національний технічний університет імені Івана Пулюя, 2007-2011'",
+    //       },
+    //       {
+    //         name: 'description',
+    //         type: 'blockContent',
+    //         title: 'Опис здобутих освітніх чи наукових ступенів'
+    //       },
+    //     ],
+    //   }],
+    // }),
     defineField({
       name: 'education',
       title: 'Освіта',
       type: 'array',
-      of: [{
-        type: 'object',
-        fields: [
-          {
-            name: 'university',
-            type: 'string',
-            title: 'Навчальний заклад',
-            description: "Рекомендований формат запису: 'Тернопільський національний технічний університет імені Івана Пулюя, 2007-2011'",
-          },
-          {
-            name: 'description',
-            type: 'blockContent',
-            title: 'Опис здобутих освітніх чи наукових ступенів'
-          },
-        ],
-      }],
-      description: "Введіть перелік завершених навчальних закладів та здобутих ступенів",
+      of: [{ type: 'educationItem' }],
+      // of: [{ type: 'repeatingLists' }],
+      // description: "Введіть місце попередньої роботи",
     }),
 
     // defineField({
@@ -171,24 +157,8 @@ export default defineType({
       name: 'experience',
       title: 'Досвід роботи',
       type: 'array',
-      of: [{
-        type: 'object',
-        fields: [
-          {
-            name: 'jobPlace',
-            type: 'string',
-            title: 'Місце роботи',
-            description: "Вказати лише повну назву закладу",
-          },
-          {
-            name: 'jobPosition',
-            type: 'string',
-            title: 'Період роботи та посада',
-            description: "Рекомендований формат запису, напр.: '01.01.2013 – 30.12.2016 - асистент кафедри електричної інженерії'",
-          },
-        ],
-      }],
-      description: "Введіть попередні місця роботи",
+      of: [{ type: 'experienceItem' }],
+      description: "Введіть місце попередньої роботи",
     }),
 
     // defineField({
@@ -338,6 +308,25 @@ export default defineType({
           },
         },
       }],
+    }),
+
+    defineField({
+      name: 'weight',
+      title: "Вага посади",
+      type: 'number',
+      description: 'Службове поле для впорядкованого відображення працівників на сторінці. Як сформувати - https://docs.google.com/spreadsheets/d/1-JnXn06rz5dKPnhyvNcqLwkpdFM9p6MZ989cWkzZe8Q/edit?usp=sharing',
+
+    }),
+
+    defineField({
+      name: 'slug',
+      title: 'Транслітероване відносне посилання',
+      type: 'slug',
+      options: {
+        source: 'firstName',
+        maxLength: 100,
+      },
+      description: 'Натисніть GENERATE і посилання автоматично сформується на основі прізвища. При потребі, ви можете його відредагувати',
     }),
 
 

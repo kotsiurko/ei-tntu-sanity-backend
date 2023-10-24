@@ -60,6 +60,16 @@ export default defineType({
     }),
 
     {
+      title: 'Посилання на документ',
+      name: 'docURL',
+      type: 'string',
+      group: "content",
+      // readOnly: true,
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/сonsultations',
+    },
+    // hidden: ({ document }) => document && document.slug && document.slug.current !== '/entrant/schools-cooperation',
+
+    {
       title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',
       name: 'academicHonesty',
       type: 'boolean',
