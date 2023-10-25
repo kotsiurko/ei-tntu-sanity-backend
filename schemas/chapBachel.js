@@ -67,6 +67,45 @@ export default defineType({
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/сonsultations',
     },
 
+
+    // РОЗКЛАД ДЗВІНКІВ
+    // Тривалість пари
+    {
+      title: 'РОЗКЛАД ДЗВІНКІВ. Тривалість пари, в хв',
+      name: 'lessonDuration',
+      type: 'number',
+      group: "content",
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    },
+    // Масив із годинами початку пар
+    {
+      title: 'РОЗКЛАД ДЗВІНКІВ. Початок кожної пари',
+      name: 'callSchedule',
+      type: 'array',
+      group: "content",
+      of: [{
+        type: 'datetime',
+        options: {
+          timeStep: 5,
+          timeFormat: 'HH:mm',
+        },
+      }],
+      description: "Дату можна не обирати, лише вказати правильний час початку кожної пари",
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    },
+
+    // {
+    //   title: 'Розклад дзвінків',
+    //   name: 'callSchedule',
+    //   type: 'datetime',
+    //   group: "content",
+    //   options: {
+    //     timeStep: 5,
+    //     timeFormat: 'HH:mm',
+    //   },
+    //   hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    // },
+
     {
       title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',
       name: 'academicHonesty',
