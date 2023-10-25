@@ -3,7 +3,7 @@ import { MdAccountBalance as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'about',
-  title: 'Про кафедру',
+  title: 'Кафедра',
   type: 'document',
   icon,
   groups: [

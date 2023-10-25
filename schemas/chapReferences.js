@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { MdBuild as icon } from 'react-icons/md'
+import { MdLink as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'references',

@@ -1,9 +1,9 @@
 import { defineField, defineType } from 'sanity'
-import { MdPerson as icon } from 'react-icons/md'
+import { MdAccountBalance as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'person',
-  title: 'Працівники',
+  title: 'Кафедра/Колектив',
   type: 'document',
   icon,
   fields: [

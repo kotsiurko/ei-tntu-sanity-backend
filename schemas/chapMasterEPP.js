@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
+import { MdPerson as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'master-epp',
@@ -65,7 +65,7 @@ export default defineType({
       type: 'array',
       group: "content",
       of: [{ type: 'reference', to: { type: 'person' } }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/educational-and-professional-programs/educational-programs',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/educational-and-professional-programs/guarantor',
     }),
   ],
 

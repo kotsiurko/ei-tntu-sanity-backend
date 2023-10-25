@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { MdAccountBalance as icon } from 'react-icons/md'
+import { MdNotInterested as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'secretPage',

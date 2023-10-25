@@ -2,7 +2,7 @@ import blockContent from './blockContent'
 
 import person from './person/person'
 import teachingSubjectItem from './person/teachingSubjectItem'
-import responsibilities from './responsibilities'
+// import responsibilities from './responsibilities'
 import news from './news/news'
 import newsList from './news/newsList'
 // import newsTemp from './news/newsTemp'
@@ -31,16 +31,16 @@ import educationItem from './person/educationItem'
 
 export const schemaTypes = [
   // Document types
-  person,
+
   teachingSubjectItem,
   experienceItem,
   educationItem,
-  news,
-  // newsTemp,
-  newsList,
-  responsibilities,
+  // responsibilities,
 
   chapAbout,
+  news,
+  newsList,
+  person,
   chapAboutMTB,
   chapSpecialities,
   chapSpecialitiesSH,

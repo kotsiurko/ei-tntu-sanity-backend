@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { MdBuild as icon } from 'react-icons/md'
+import { MdSubscriptions as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'intresting',

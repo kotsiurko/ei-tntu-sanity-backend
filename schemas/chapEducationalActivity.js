@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { MdSentimentVerySatisfied as icon } from 'react-icons/md'
+import { MdTheaters as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'educational-activity',

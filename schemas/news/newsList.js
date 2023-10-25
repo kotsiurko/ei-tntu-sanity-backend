@@ -1,10 +1,10 @@
 import { defineField, defineType } from 'sanity'
-import { MdPerson as icon } from 'react-icons/md'
+import { MdAccountBalance as icon } from 'react-icons/md'
 // import moment from 'moment/moment';
 
 export default defineType({
   name: 'newsList',
-  title: 'Новини (груповані)',
+  title: 'Кафедра/Новини (груповані)',
   type: 'document',
   icon,
   fields: [
