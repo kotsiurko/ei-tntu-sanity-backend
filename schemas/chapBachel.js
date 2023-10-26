@@ -59,26 +59,27 @@ export default defineType({
       group: "content",
     }),
 
-    {
+    defineField({
       title: 'Посилання на документ',
       name: 'docURL',
-      type: 'string',
+      type: 'url',
+      description: 'Відображатиметься на сторінці в спеціальному переглядачі. Доступні формати pdf та docx',
       group: "content",
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/сonsultations',
-    },
+    }),
 
-
+    // СТОРІНКА "ГРАФІКИ НАВЧАЛЬНОГО ПРОЦЕСУ"
     // РОЗКЛАД ДЗВІНКІВ
     // Тривалість пари
-    {
+    defineField({
       title: 'РОЗКЛАД ДЗВІНКІВ. Тривалість пари, в хв',
       name: 'lessonDuration',
       type: 'number',
       group: "content",
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
-    },
+    }),
     // Масив із годинами початку пар
-    {
+    defineField({
       title: 'РОЗКЛАД ДЗВІНКІВ. Початок кожної пари',
       name: 'callSchedule',
       type: 'array',
@@ -90,21 +91,70 @@ export default defineType({
           timeFormat: 'HH:mm',
         },
       }],
-      description: "Дату можна не обирати, лише вказати правильний час початку кожної пари",
+      description: "У випадаючому вікні слід обирати лише час, на дату можна не зважати. Дату можна залишити будь-якою, вона на сайті не відображатиметься. Відображається лише час",
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    }),
+
+    // ГРАФІК НАВЧАЛЬНИХ ТИЖНІВ
+    // Рядок із зазначення періоду навчання/ семестру
+    defineField({
+      name: 'semesterPeriod',
+      title: 'ГРАФІК НАВЧАЛЬНИХ ТИЖНІВ. Період навчання',
+      type: 'string',
+      group: "content",
+      description: 'Текст відображається під заголовком і зазначає період для якого генерується графік. напр.: "Осінній семестр 2023-2024 навчального року"',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    }),
+
+    defineField({
+      name: 'weeksAmount',
+      title: 'ГРАФІК НАВЧАЛЬНИХ ТИЖНІВ. Кількість навчальних тижнів',
+      type: 'number',
+      group: "content",
+      description: 'Для осіннього семестру може бути 14 тижнів, для весняного - 18 тощо',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    }),
+
+    defineField({
+      name: 'semesterStarts',
+      title: 'ГРАФІК НАВЧАЛЬНИХ ТИЖНІВ. Дата початку семестру',
+      type: 'date',
+      group: "content",
+      description: 'Зверніть увагу, що неділя у випадаючому календарі - початок тижня, тому уважно обирайте понеділок - Mon. Таблиця генеруватиметься автоматично, відштовхуючись від цієї дати',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
+    }),
+    // Кінець опису сторінки "ГРАФІКИ НАВЧАЛЬНОГО ПРОЦЕСУ"
+
+
+
+    // Посилання на НАВЧАЛЬНІ ПЛАНИ
+    {
+      title: 'НАВЧАЛЬНІ ПЛАНИ',
+      name: 'eduPlanList',
+      type: 'array',
+      group: "content",
+      of: [{
+        title: 'Навчальний план',
+        name: 'eduPlanItem',
+        type: 'document',
+        fields: [
+          {
+            title: "Назва навчального плану",
+            name: 'eduPlanTitle',
+            type: 'string'
+          },
+          {
+            title: "Посилання",
+            name: 'eduPlanURL',
+            description: 'Відображатиметься на сторінці в спеціальному переглядачі. Доступні формати pdf та docx',
+            type: 'url'
+          },
+        ]
+      }],
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
     },
+    // Кінець опису Посилання на НАВЧАЛЬНІ ПЛАНИ
 
-    // {
-    //   title: 'Розклад дзвінків',
-    //   name: 'callSchedule',
-    //   type: 'datetime',
-    //   group: "content",
-    //   options: {
-    //     timeStep: 5,
-    //     timeFormat: 'HH:mm',
-    //   },
-    //   hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/schedules-of-educational-process',
-    // },
 
     {
       title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',

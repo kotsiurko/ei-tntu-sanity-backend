@@ -317,10 +317,11 @@ export default defineType({
       title: 'Транслітероване відносне посилання',
       type: 'slug',
       options: {
-        source: 'firstName',
+        // source: 'firstName',
+        source: (doc, context) => `${doc.firstName}-${doc.secondName}`,
         maxLength: 100,
       },
-      description: 'Натисніть GENERATE і посилання автоматично сформується на основі прізвища. При потребі, ви можете його відредагувати',
+      description: 'Натисніть GENERATE і посилання автоматично сформується на основі прізвища та імені. При потребі, ви можете його відредагувати',
     }),
 
 
