@@ -26,12 +26,14 @@ import secretPage from './secretPage'
 import youtube from './youtube'
 import experienceItem from './person/experienceItem'
 import educationItem from './person/educationItem'
+import mainPage from './mainPage'
 // import siteSettings from './siteSettings'
 // import deskStructure from './deskStructure'
 
 export const schemaTypes = [
   // Document types
 
+  mainPage,
   teachingSubjectItem,
   experienceItem,
   educationItem,
