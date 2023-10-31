@@ -34,18 +34,6 @@ export default defineType({
       group: "serviceField",
     }),
 
-    // defineField({
-    //   name: 'slug',
-    //   title: 'Посилання на блок',
-    //   type: 'slug',
-    //   group: "serviceField",
-    //   // ! РОЗКОМЕНТУВАТИ, коли завершу створення блоків в адмінці !
-    //   // readOnly: true,
-    //   options: {
-    //     source: 'title',
-    //     maxLength: 100,
-    //   },
-    // }),
 
     // Блок ХТО МИ Є
     {
@@ -53,14 +41,14 @@ export default defineType({
       name: 'whoWeArePrimary',
       type: 'text',
       group: "content",
-      hidden: ({ document }) => document && document.slug && document.slug.current !== 'whoWeAre',
+      hidden: ({ document }) => document && document.title !== 'Хто ми є',
     },
     {
       title: 'Нижній текст',
       name: 'whoWeAreSecondary',
       type: 'text',
       group: "content",
-      hidden: ({ document }) => document && document.slug && document.slug.current !== 'whoWeAre',
+      hidden: ({ document }) => document && document.title !== 'Хто ми є',
     },
     {
       title: 'Загальне фото',
@@ -74,7 +62,7 @@ export default defineType({
         },
       ],
       group: "content",
-      hidden: ({ document }) => document && document.slug && document.slug.current !== 'whoWeAre',
+      hidden: ({ document }) => document && document.title !== 'Хто ми є',
     },
     {
       title: 'Лічильники',
@@ -103,9 +91,121 @@ export default defineType({
           },
         ]
       }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== 'whoWeAre',
+      hidden: ({ document }) => document && document.title !== 'Хто ми є',
     },
     // Кінець опису ХТО МИ Є
+
+    // Блок НАШІ ЦІННОСТІ
+    {
+      name: 'valuesMainTitle',
+      title: 'Головний девіз',
+      type: 'string',
+      group: "content",
+      hidden: ({ document }) => document && document.title !== 'Наші цінності',
+    },
+    {
+      title: 'Список цінностей',
+      name: 'valuesList',
+      type: 'array',
+      group: "content",
+      of: [{
+        title: 'Опис картки',
+        name: 'valueItem',
+        type: 'document',
+        group: "content",
+        fields: [
+          {
+            title: "Заголовок",
+            name: 'valueTitle',
+            type: 'string'
+          },
+          {
+            name: 'valueDescription',
+            title: 'Опис',
+            type: 'text'
+          },
+          {
+            title: 'Картинка',
+            name: 'valueImage',
+            type: 'image',
+            description: 'Зображення повинно бути розміром 640 на 480 пікселів, формату png та з білим або прозорим фоном',
+            fields: [
+              {
+                name: 'caption',
+                type: 'string',
+                title: 'Підпис до зображення',
+              },
+            ],
+          },
+        ]
+      }],
+      hidden: ({ document }) => document && document.title !== 'Наші цінності',
+    },
+    // Кінець опису НАШІ ЦІННОСТІ
+
+    // Блок БУКЛЕТИ
+    {
+      title: 'Картки буклетів',
+      name: 'bookletsList',
+      type: 'array',
+      group: "content",
+      of: [
+        {
+          title: 'Опис картки',
+          name: 'bookletItem',
+          type: 'document',
+          group: "content",
+          fields: [
+            {
+              title: 'Заголовок',
+              name: 'title',
+              type: 'string',
+            },
+            {
+              title: 'Картки',
+              name: 'bookletsInnerList',
+              type: 'array',
+              description: 'Увага! Усі прикріплені зображення повинні бути з однаковими співвідношеннями сторін',
+              of: [
+                {
+                  title: 'Опис картки',
+                  name: 'bookletInnerItem',
+                  type: 'document',
+                  group: "content",
+                  fields: [
+                    {
+                      title: 'Заголовок буклета',
+                      name: 'bookletInnerTitle',
+                      type: 'string',
+                      description: 'Заголовок лише відображається тут, в адмінці (на сайті не відображається)'
+                    },
+                    {
+                      title: 'Посилання на буклет',
+                      name: 'bookletURL',
+                      type: 'url',
+                    },
+                    {
+                      title: 'Прев\'ю буклета',
+                      name: 'bookletPreview',
+                      type: 'image',
+                      fields: [{
+                        name: 'caption',
+                        type: 'string',
+                        title: 'Підпис до зображення',
+                        description: 'Можна продублювати із заголовка'
+                      }],
+                    }
+                  ]
+                }
+
+              ]
+            }
+          ]
+        }
+      ],
+      hidden: ({ document }) => document && document.title !== 'Буклети',
+    },
+    // Кінець опису БУКЛЕТИ
 
     // Блок ЧАСТІ ПИТАННЯ
     {
@@ -120,7 +220,7 @@ export default defineType({
         fields: [
           {
             title: "Запитання",
-            name: 'faQustion',
+            name: 'faQuestion',
             type: 'string'
           },
           {
@@ -130,7 +230,7 @@ export default defineType({
           },
         ]
       }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== 'faq',
+      hidden: ({ document }) => document && document.title !== 'Часті питання',
     },
     // Кінець опису Посилання на НАВЧАЛЬНІ ПЛАНИ
   ],
@@ -156,11 +256,11 @@ export default defineType({
     select: {
       title: 'title',
       positionNumber: 'positionNumber',
-      slug: 'slug',
+      // slug: 'slug',
     },
     prepare(selection) {
-      const { title, positionNumber, slug } = selection;
-      const sub = `${positionNumber} | ${slug.current}`;
+      const { title, positionNumber } = selection;
+      const sub = `Порядковість блоків: ${positionNumber}`;
       return {
         title: title,
         subtitle: sub,
