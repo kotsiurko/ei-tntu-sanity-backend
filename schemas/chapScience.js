@@ -57,6 +57,36 @@ export default defineType({
       title: 'Структура',
       type: 'blockContent',
       group: "content",
+      hidden: ({ document }) => document && document.slug && document.slug.current === '/science/main-scientific-publications',
+    }),
+
+    defineField({
+      name: 'sciPublTypes',
+      title: 'Публікації',
+      type: 'array',
+      group: "content",
+      of: [
+        {
+          title: 'Публікації за типом',
+          name: 'sciType',
+          type: 'document',
+          fields: [
+            {
+              title: 'Тип публікації',
+              name: 'sciPublType',
+              type: 'string',
+              readOnly: true,
+            },
+            {
+              name: 'publBody',
+              title: 'Вміст, список публікацій',
+              type: 'blockContent',
+            }
+          ]
+        }
+
+      ],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/science/main-scientific-publications',
     }),
 
   ],
