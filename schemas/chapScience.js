@@ -75,7 +75,6 @@ export default defineType({
               title: 'Тип публікації',
               name: 'sciPublType',
               type: 'string',
-              readOnly: true,
             },
             {
               name: 'publBody',
