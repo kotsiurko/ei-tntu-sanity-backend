@@ -23,8 +23,8 @@ export default defineType({
       title: 'Назва',
       type: 'string',
       group: "content",
-      // ! РОЗКОМЕНТУВАТИ, коли завершу створення блоків в адмінці !
-      // readOnly: true,
+      // ! Щоб ніхто не поламав вигляд основної сторінки !
+      readOnly: true,
     }),
 
     defineField({

@@ -65,7 +65,7 @@ export default defineType({
       type: 'array',
       group: "content",
       of: [{ type: 'reference', to: { type: 'person' } }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/educational-and-professional-programs/guarantor',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/educational-and-professional-programs/programs-and-guarantor',
     }),
   ],
 

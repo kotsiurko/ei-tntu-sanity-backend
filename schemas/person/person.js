@@ -95,7 +95,8 @@ export default defineType({
       name: 'edGuarantee',
       title: "Гарант освітньої програми",
       type: 'array',
-      of: [{ type: 'text', rows: 2, }],
+      // of: [{ type: 'text', rows: 2, }],
+      of: [{ type: 'educationProgItem' }],
       description: "Натисніть Add Item, щоб додати освітню програму",
     }),
 

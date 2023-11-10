@@ -27,6 +27,7 @@ import youtube from './youtube'
 import experienceItem from './person/experienceItem'
 import educationItem from './person/educationItem'
 import mainPage from './mainPage'
+import educationProgItem from './person/educationProgItem'
 // import siteSettings from './siteSettings'
 // import deskStructure from './deskStructure'
 
@@ -37,6 +38,7 @@ export const schemaTypes = [
   teachingSubjectItem,
   experienceItem,
   educationItem,
+  educationProgItem,
   // responsibilities,
 
   chapAbout,
