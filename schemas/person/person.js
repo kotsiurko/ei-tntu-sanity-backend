@@ -325,6 +325,29 @@ export default defineType({
       description: 'Натисніть GENERATE і посилання автоматично сформується на основі прізвища та імені. При потребі, ви можете його відредагувати',
     }),
 
+    defineField({
+      name: 'toShowOnMainPage',
+      title: 'Додати працівника на головну сторінку в секцію "ВИКЛАДАЧІ"',
+      type: 'boolean',
+      description: 'Якщо відмітете чекбокс, то викладач відображатиметься на головній сторінці',
+    }),
+
+    defineField({
+      name: 'personSlogan',
+      title: 'Слоган',
+      type: 'blockContent',
+      description: 'Відображається під підписом викладача на головній сторінці',
+      hidden: ({ document }) => document && document.toShowOnMainPage !== true,
+    }),
+
+    // defineField({
+    //   name: 'personSlogan2',
+    //   title: 'Слоган',
+    //   type: 'blockContent',
+    //   description: 'Відображається під підписом викладача на головній сторінці',
+    //   hidden: ({ document }) => document && document.toShowOnMainPage !== true,
+    // }),
+
 
 
     // ============================

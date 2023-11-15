@@ -59,8 +59,20 @@ export default defineType({
       group: "content",
     }),
 
+    // Сторінка ПРАКТИКИ
     {
-      title: 'Службове поле. Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',
+      title: 'Список практик',
+      name: 'masterPracticesList',
+      type: 'array',
+      group: "content",
+      description: 'Порядок відображення практик можна змінювати вручну переміщенням елементів поміж собою. Для зручності, розміщуйте І курс (денники, заочники, іноземці). дальше ІІ курс і так далі...',
+      of: [{ type: 'practiceItem' }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/practices',
+    },
+    // Кінець сторінки ПРАКТИКИ
+
+    {
+      title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',
       name: 'academicHonesty',
       type: 'boolean',
       options: {

@@ -28,6 +28,7 @@ import experienceItem from './person/experienceItem'
 import educationItem from './person/educationItem'
 import mainPage from './mainPage'
 import educationProgItem from './person/educationProgItem'
+import practiceItem from './shared/practiceItem'
 // import siteSettings from './siteSettings'
 // import deskStructure from './deskStructure'
 
@@ -60,6 +61,9 @@ export const schemaTypes = [
   chapReferences,
   chapIntresting,
   secretPage,
+
+  // shared
+  practiceItem,
 
   // Other types
   blockContent,

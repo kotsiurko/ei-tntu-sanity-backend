@@ -155,6 +155,86 @@ export default defineType({
     },
     // Кінець опису Посилання на НАВЧАЛЬНІ ПЛАНИ
 
+    // Сторінка ПРАКТИКИ
+    {
+      title: 'Список практик',
+      name: 'bachPracticesList',
+      type: 'array',
+      group: "content",
+      description: 'Порядок відображення практик можна змінювати вручну переміщенням елементів поміж собою. Для зручності, розміщуйте І курс (денники, заочники, іноземці). дальше ІІ курс і так далі...',
+      of: [{ type: 'practiceItem' }],
+      // of: [{
+      //   title: 'Практика',
+      //   name: 'bachPracticeItem',
+      //   type: 'document',
+      //   fields: [
+      //     {
+      //       title: "Курс навчання",
+      //       name: 'bachPracticeCourse',
+      //       type: 'string',
+      //       options: {
+      //         list: [
+      //           'I',
+      //           'II',
+      //           'III',
+      //           'IV',
+      //         ], layout: 'radio', direction: 'horizontal'
+      //       },
+      //     },
+      //     {
+      //       title: "Форма навчання",
+      //       name: 'bachPracticeEduForm',
+      //       type: 'string',
+      //       options: {
+      //         list: [
+      //           'Денна',
+      //           'Заочна',
+      //           'Іноземці',
+      //         ], layout: 'radio', direction: 'horizontal'
+      //       },
+      //     },
+      //     {
+      //       title: "Період",
+      //       name: 'bachPracticePeriod',
+      //       type: 'string',
+      //       description: 'Рекомендований формат введення дат: "10.07.23 – 23.07.23"'
+      //     },
+      //     {
+      //       title: "Назва",
+      //       name: 'bachPracticeTitle',
+      //       type: 'string'
+      //     },
+      //     {
+      //       title: "Керівник",
+      //       name: 'bachPracticeSupervisor',
+      //       type: 'string'
+      //     },
+      //     {
+      //       title: "Посилання на курс в ATutor",
+      //       name: 'bachPracticeATLink',
+      //       type: 'url'
+      //     },
+      //     {
+      //       title: "Наказ",
+      //       name: 'bachPracticeDecree',
+      //       type: 'url'
+      //     },
+      //   ],
+      //   preview: {
+      //     select: { title: 'bachPracticeTitle', course: "bachPracticeCourse", eduForm: 'bachPracticeEduForm' },
+      //     prepare(selection) {
+      //       const { title, course, eduForm } = selection;
+      //       return {
+      //         title: title,
+      //         subtitle: `${course} курс | Форма навчання: ${eduForm}`,
+      //       }
+      //     },
+      //   },
+      // }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/practices',
+    },
+    // Кінець сторінки ПРАКТИКИ
+
 
     {
       title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',
