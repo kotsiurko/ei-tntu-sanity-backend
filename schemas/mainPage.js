@@ -77,17 +77,20 @@ export default defineType({
           {
             title: "Текст над числом",
             name: 'counterItemPrimary',
-            type: 'string'
+            type: 'string',
+            validation: Rule => Rule.required()
           },
           {
             title: "Число",
             name: 'counterItemNumber',
-            type: 'number'
+            type: 'number',
+            validation: Rule => Rule.required(),
           },
           {
             title: "Текст під числом",
             name: 'counterItemSecondary',
-            type: 'string'
+            type: 'string',
+            validation: Rule => Rule.required()
           },
         ]
       }],
