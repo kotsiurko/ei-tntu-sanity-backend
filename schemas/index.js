@@ -29,6 +29,7 @@ import educationItem from './person/educationItem'
 import mainPage from './mainPage'
 import educationProgItem from './person/educationProgItem'
 import practiceItem from './shared/practiceItem'
+import otherPages from './chapOtherPages'
 // import siteSettings from './siteSettings'
 // import deskStructure from './deskStructure'
 
@@ -61,6 +62,7 @@ export const schemaTypes = [
   chapReferences,
   chapIntresting,
   secretPage,
+  otherPages,
 
   // shared
   practiceItem,

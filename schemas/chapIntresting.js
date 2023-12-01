@@ -144,6 +144,15 @@ export default defineType({
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/intresting/press-publications',
     },
 
+    // Герої не вмирають
+    // {
+    //   title: 'Текст на сторінці',
+    //   name: 'heroes',
+    //   type: 'blockContent',
+    //   group: "content",
+    //   hidden: ({ document }) => document && document.slug && document.slug.current !== '/intresting/heroes',
+    // },
+
   ],
 
   orderings: [

@@ -438,15 +438,20 @@ export default defineType({
       acadStatus: 'acadStatus'
     },
     prepare(selection) {
-      console.log('selection Person:>> ', selection);
       const { firstName, secondName, fatherName, media, position, weight, sciDegree, acadStatus } = selection;
-      const sub = acadStatus.toLowerCase() === position.toLowerCase()
-        ? `${weight} / ${sciDegree}, ${position}`
-        : `${weight} / ${sciDegree}, ${acadStatus}, ${position}`
+      const credentials = () => {
+        if (sciDegree === "Немає" || acadStatus === "Немає") {
+          return position;
+        } else if (acadStatus.toLowerCase() === position.toLowerCase()) {
+          return `${sciDegree}, ${position}`
+        } else {
+          return `${sciDegree}, ${acadStatus}, ${position}`
+        }
+      }
       return {
         title: `${firstName} ${secondName} ${fatherName}`,
         media: media,
-        subtitle: sub,
+        subtitle: `${weight} / ${credentials()}`,
       }
     },
   },
