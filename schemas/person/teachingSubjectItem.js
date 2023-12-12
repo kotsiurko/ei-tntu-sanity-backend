@@ -12,8 +12,8 @@ export default defineType({
     }),
     defineField({
       name: 'teachingSubjectURL',
-      title: 'ID дисципліни в системі Atutor',
-      description: 'Якщо в ATutor є навчальний курс, то вставте посилання. Воно має мати такий вигляд: "https://dl.tntu.edu.ua/bounce.php?course=5396", де після частини "?course=" обов\'язково має бути ID курсу',
+      title: 'Посилання на курс в системі Atutor',
+      description: 'Посилання має мати такий вигляд: "https://dl.tntu.edu.ua/bounce.php?course=5396", де після частини "?course=" обов\'язково має бути ID курсу',
       type: 'url',
     }),
   ],

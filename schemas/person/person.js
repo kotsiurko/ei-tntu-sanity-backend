@@ -362,7 +362,7 @@ export default defineType({
       type: 'number',
       description: 'Службове поле для впорядкованого відображення працівників на сторінці. Як сформувати - https://docs.google.com/spreadsheets/d/1-JnXn06rz5dKPnhyvNcqLwkpdFM9p6MZ989cWkzZe8Q/edit?usp=sharing',
       group: 'serviceField',
-
+      validation: Rule => Rule.required(),
     }),
 
     defineField({
@@ -376,6 +376,7 @@ export default defineType({
       },
       description: 'Натисніть GENERATE і посилання автоматично сформується на основі прізвища та імені. При потребі, ви можете його відредагувати',
       group: 'serviceField',
+      validation: Rule => Rule.required(),
     }),
 
     defineField({
@@ -440,10 +441,12 @@ export default defineType({
     prepare(selection) {
       const { firstName, secondName, fatherName, media, position, weight, sciDegree, acadStatus } = selection;
       const credentials = () => {
-        if (sciDegree === "Немає" || acadStatus === "Немає") {
-          return position;
-        } else if (acadStatus.toLowerCase() === position.toLowerCase()) {
+        if (sciDegree === "Немає" && acadStatus === "Немає") {
+          return position
+        } else if (acadStatus === "Немає") {
           return `${sciDegree}, ${position}`
+        } else if (sciDegree === "Немає") {
+          return `${acadStatus}, ${position}`;
         } else {
           return `${sciDegree}, ${acadStatus}, ${position}`
         }
