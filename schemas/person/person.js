@@ -225,7 +225,7 @@ export default defineType({
       name: 'sciProjects',
       title: 'Наукові теми та проєкти',
       type: 'array',
-      of: [{ type: 'text', rows: 2, }],
+      of: [{ type: 'text', rows: 4, }],
       description: "Рекомендований формат запису: 'ДІ 180-11 «Удосконалення управління навчально-науково-виробничими системами в умовах суспільних та інституційних трансформацій»'",
       group: 'bio',
     }),
@@ -274,7 +274,8 @@ export default defineType({
       title: "Стажування",
       type: 'array',
       of: [{
-        type: 'string',
+        type: 'text',
+        rows: 3,
       }],
       description: "Рекомендований формат запису: 'ВАТ «Тернопільобленерго». Період 17 жовтня 2017 р. - 17 листопада  2017 р.",
       group: 'bio',

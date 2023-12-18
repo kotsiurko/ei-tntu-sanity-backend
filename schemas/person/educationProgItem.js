@@ -9,12 +9,14 @@ export default defineType({
       name: 'edProgTitle',
       title: 'Назва освітньої програми',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'edProgURL',
       title: 'Посилання на освітню програму',
       description: "Завантажте документ в форматі pdf або docx",
       type: 'url',
+      validation: Rule => Rule.required(),
     }),
 
     defineField({
