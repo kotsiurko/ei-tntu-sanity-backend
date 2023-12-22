@@ -101,6 +101,8 @@ export default defineType({
           'заступник завідувача кафедрою',
           'професор кафедри електричної інженерії',
           'доцент кафедри електричної інженерії',
+          'професор',
+          'доцент',
           'старший викладач',
           'викладач',
           'асистент',
@@ -108,19 +110,21 @@ export default defineType({
           'інженер 2-ї категорії',
           'інженер 1-ї категорії',
           'лаборант',
-        ], layout: 'radio', direction: 'horizontal'
+        ],
+        layout: 'dropdown',
+        // direction: 'horizontal'
       },
-      // type: 'object',
-      // fields: [
-      //   { name: 'long', type: 'string', title: 'Повністю' },
-      //   { name: 'short', type: 'string', title: 'Скорочено', description: 'Відображається на сторінці колективу, в картці працівника', },
-      // ],
-      // options: {
-      //   collapsible: true,
-      //   collapsed: true,
-      // },
-      // description: 'Розгорніть, щоб заповнити чи переглянути поля',
       group: 'bio',
+    }),
+
+    defineField({
+      name: 'position_continue',
+      title: "Продовження посади",
+      type: 'string',
+      group: 'bio',
+      description: 'Для професорів та доцентів. Дописати на якій кафедрі обіймає людина посаду. Наприклад, "кафедри електричної інженерії"',
+      validation: Rule => Rule.required(),
+      hidden: ({ document }) => document && document.position !== 'доцент' && document.position !== 'професор',
     }),
 
     defineField({
@@ -147,7 +151,6 @@ export default defineType({
         { name: 'rIDtr', type: 'string', title: 'ResearcherID TR' },
         { name: 'fb', type: 'string', title: 'Facebook' },
         { name: 'li', type: 'string', title: 'LinkedIn' },
-        // { name: 'risc', type: 'string', title: 'РИНЦ Science Index' },
         { name: 'iCi', type: 'string', title: 'Index Copernicus International' },
       ],
       options: { collapsible: true, collapsed: true },
@@ -162,20 +165,6 @@ export default defineType({
       of: [{ type: 'educationItem' }],
       group: 'bio',
     }),
-
-    // defineField({
-    //   name: 'sciDegreeAwarding',
-    //   title: 'Присудження наукового ступеня',
-    //   type: 'array',
-    //   of: [{ type: 'text', rows: 2, }],
-    // }),
-
-    // defineField({
-    //   name: 'acadStatusAwarding',
-    //   title: 'Присудження наукового звання',
-    //   type: 'array',
-    //   of: [{ type: 'text', rows: 2, }],
-    // }),
 
     defineField({
       name: 'achievements',
@@ -192,12 +181,6 @@ export default defineType({
       description: "Введіть місце попередньої роботи",
       group: 'bio',
     }),
-
-    // defineField({
-    //   name: 'sciWork',
-    //   title: 'Наукова робота',
-    //   type: 'blockContent',
-    // }),
 
     defineField({
       name: 'sciInterests',
@@ -229,22 +212,6 @@ export default defineType({
       description: "Рекомендований формат запису: 'ДІ 180-11 «Удосконалення управління навчально-науково-виробничими системами в умовах суспільних та інституційних трансформацій»'",
       group: 'bio',
     }),
-
-    // defineField({
-    //   name: 'cathedralResonsibilities',
-    //   title: "Загальнокафедральні обов'язки",
-    //   type: 'array',
-    //   of: [{ type: 'reference', to: [{ type: 'responsibilities' }] }],
-    //   description: "Натисніть Add Item та оберіть зі випадаючого списку. Із повним списком обов'язків можна ознайомитись на сторінці /responsibilities",
-    // }),
-
-    // defineField({
-    //   name: 'otherResonsibilities',
-    //   title: "Інші обов'язки",
-    //   type: 'array',
-    //   of: [{ type: 'text', rows: 2, }],
-    //   description: "Натисніть Add Item та запишіть закріплені за працівником обов'язки. Кожен обов'язок виносіть в окремий item",
-    // }),
 
     defineField({
       name: 'reviewing',
@@ -322,6 +289,13 @@ export default defineType({
       type: 'text',
       rows: 4,
       hidden: ({ document }) => document && document.formerEmployeeBool !== true,
+      group: 'bio',
+    }),
+
+    defineField({
+      name: 'otherInfo',
+      title: 'Інша інформація про працівника',
+      type: 'blockContent',
       group: 'bio',
     }),
 
