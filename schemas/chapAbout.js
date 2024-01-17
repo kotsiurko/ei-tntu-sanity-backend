@@ -58,6 +58,14 @@ export default defineType({
       type: 'blockContent',
       group: "content",
     }),
+
+    defineField({
+      name: 'docURL',
+      title: 'Посилання на електронний документ',
+      group: "content",
+      type: 'url',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/strategy',
+    }),
   ],
 
   orderings: [

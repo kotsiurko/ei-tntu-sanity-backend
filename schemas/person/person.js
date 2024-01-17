@@ -99,8 +99,6 @@ export default defineType({
         list: [
           'завідувач кафедрою',
           'заступник завідувача кафедрою',
-          'професор кафедри електричної інженерії',
-          'доцент кафедри електричної інженерії',
           'професор',
           'доцент',
           'старший викладач',
@@ -123,7 +121,7 @@ export default defineType({
       type: 'string',
       group: 'bio',
       description: 'Для професорів та доцентів. Дописати на якій кафедрі обіймає людина посаду. Наприклад, "кафедри електричної інженерії"',
-      validation: Rule => Rule.required(),
+      // validation: Rule => Rule.required(),
       hidden: ({ document }) => document && document.position !== 'доцент' && document.position !== 'професор',
     }),
 
