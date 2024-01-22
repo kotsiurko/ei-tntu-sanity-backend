@@ -269,6 +269,16 @@ export default defineType({
       },
     },
     {
+      title: 'Додати в "Абітурієнту / Відзнаки студенту',
+      name: 'studHonorsBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
       title: 'Додати в "Наука / Конференція “Світлотехніка й електроенергетика” / Новини розділу"',
       name: 'conferenceLEandPEBool',
       type: 'boolean',
