@@ -25,6 +25,13 @@ export default defineType({
       options: {
         columns: 3,
       }
+    },
+    {
+      name: 'sciDegreeFieldset',
+      title: 'Науковий ступінь',
+      options: {
+        columns: 2,
+      }
     }
   ],
 
@@ -75,12 +82,32 @@ export default defineType({
     }),
 
 
+    // defineField({
+    //   name: 'sciDegree',
+    //   title: "Науковий ступінь",
+    //   type: 'string',
+    //   options: { list: ['к.т.н.', 'доктор філософії / ph.D', 'д.т.н.', 'Немає'], layout: 'radio', direction: 'horizontal' },
+    //   group: 'bio',
+    // }),
+
     defineField({
-      name: 'sciDegree',
-      title: "Науковий ступінь",
+      name: 'sciDegreeFull',
+      // Науковий ступінь
+      title: "Повністю",
       type: 'string',
-      options: { list: ['к.т.н.', 'доктор філософії / ph.D', 'д.т.н.', 'Немає'], layout: 'radio', direction: 'horizontal' },
+      initialValue: "кандидат технічних наук",
       group: 'bio',
+      fieldset: "sciDegreeFieldset",
+    }),
+
+    defineField({
+      name: 'sciDegreeShort',
+      // Науковий ступінь
+      title: "Скорочено",
+      type: 'string',
+      initialValue: "к.т.н.",
+      group: 'bio',
+      fieldset: "sciDegreeFieldset",
     }),
 
     defineField({
@@ -123,6 +150,14 @@ export default defineType({
       description: 'Для професорів та доцентів. Дописати на якій кафедрі обіймає людина посаду. Наприклад, "кафедри електричної інженерії"',
       // validation: Rule => Rule.required(),
       hidden: ({ document }) => document && document.position !== 'доцент' && document.position !== 'професор',
+    }),
+
+    defineField({
+      name: 'additional_requisites',
+      title: "Додатковий підпис до голоовних реквізитів",
+      type: 'string',
+      group: 'bio',
+      description: 'Цей текст йтиме після вченого звання та посади для відображення певних повноважень чи обійманих посад за сумісництвом. Напр., "головний енергетик ТОВ "Тернопільхлібпром" чи "гарант освітньої програми" тощо',
     }),
 
     defineField({
@@ -408,26 +443,42 @@ export default defineType({
       media: 'mainPhoto',
       position: 'position',
       weight: 'weight',
-      sciDegree: 'sciDegree',
+      sciDegree: 'sciDegreeShort',
       acadStatus: 'acadStatus'
     },
     prepare(selection) {
       const { firstName, secondName, fatherName, media, position, weight, sciDegree, acadStatus } = selection;
-      const credentials = () => {
-        if (sciDegree === "Немає" && acadStatus === "Немає") {
-          return position
-        } else if (acadStatus === "Немає") {
-          return `${sciDegree}, ${position}`
-        } else if (sciDegree === "Немає") {
-          return `${acadStatus}, ${position}`;
-        } else {
-          return `${sciDegree}, ${acadStatus}, ${position}`
+      // const credentials = () => {
+      //   if (sciDegree === "Немає" && acadStatus === "Немає") {
+      //     return position
+      //   } else if (acadStatus === "Немає") {
+      //     return `${sciDegree}, ${position}`
+      //   } else if (sciDegree === "Немає") {
+      //     return `${acadStatus}, ${position}`;
+      //   } else {
+      //     return `${sciDegree}, ${acadStatus}, ${position}`
+      //   }
+      // }
+
+      const personCredentials = (sciDegree, acadStatus, position) => {
+        const requisitesArray = [];
+        if (sciDegree) {
+          requisitesArray.push(sciDegree);
         }
-      }
+        if (acadStatus && acadStatus !== "Немає") {
+          requisitesArray.push(acadStatus);
+        }
+        if (position && position !== "Немає" && position !== acadStatus) {
+          requisitesArray.push(position);
+        }
+        const requisitesString = requisitesArray.join(', ');
+        return requisitesString;
+      };
+
       return {
         title: `${firstName} ${secondName} ${fatherName}`,
         media: media,
-        subtitle: `${weight} / ${credentials()}`,
+        subtitle: `${weight} / ${personCredentials(sciDegree, acadStatus, position)}`,
       }
     },
   },
