@@ -448,17 +448,6 @@ export default defineType({
     },
     prepare(selection) {
       const { firstName, secondName, fatherName, media, position, weight, sciDegree, acadStatus } = selection;
-      // const credentials = () => {
-      //   if (sciDegree === "Немає" && acadStatus === "Немає") {
-      //     return position
-      //   } else if (acadStatus === "Немає") {
-      //     return `${sciDegree}, ${position}`
-      //   } else if (sciDegree === "Немає") {
-      //     return `${acadStatus}, ${position}`;
-      //   } else {
-      //     return `${sciDegree}, ${acadStatus}, ${position}`
-      //   }
-      // }
 
       const personCredentials = (sciDegree, acadStatus, position) => {
         const requisitesArray = [];
