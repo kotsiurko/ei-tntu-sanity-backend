@@ -72,5 +72,11 @@ export default defineType({
     defineArrayMember({
       type: 'youtube',
     }),
+    defineArrayMember({
+      // type: "table"
+      name: 'customTable',
+      title: 'Таблиця',
+      type: 'table',
+    }),
   ],
 })

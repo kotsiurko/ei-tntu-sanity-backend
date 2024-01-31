@@ -3,6 +3,8 @@ import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 //import {googleMapsInput} from '@sanity/google-maps-input'
 import { schemaTypes } from './schemas'
+import { table } from '@sanity/table';
+
 
 import { media } from 'sanity-plugin-media'
 
@@ -14,6 +16,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
+    table(),
     deskTool(),
     visionTool(),
     //googleMapsInput(),
