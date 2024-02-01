@@ -54,10 +54,22 @@ export default defineType({
 
     defineField({
       name: 'body',
-      title: 'Структура',
+      title: 'Вміст сторінки',
       type: 'blockContent',
       group: "content",
     }),
+
+    // ----------------
+    defineField({
+      title: 'Посилання на документ',
+      name: 'docURL',
+      type: 'url',
+      description: 'Відображатиметься на сторінці в спеціальному переглядачі. Доступні формати pdf та docx',
+      group: "content",
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/stakeholders/principles',
+      // specialities/stakeholders/principles
+    }),
+    // hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/academic-honesty',
   ],
 
   orderings: [
