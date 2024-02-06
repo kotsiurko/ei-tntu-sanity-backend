@@ -1,6 +1,6 @@
-import { defineField, defineType } from 'sanity'
-import { MdAccountBalance as icon } from 'react-icons/md'
-import moment from 'moment/moment';
+import {defineField, defineType} from 'sanity'
+import {MdAccountBalance as icon} from 'react-icons/md'
+import moment from 'moment/moment'
 
 export default defineType({
   name: 'news',
@@ -19,12 +19,12 @@ export default defineType({
     },
   ],
   fields: [
-
     {
       name: 'newsTitle',
-      title: "Заголовок",
+      title: 'Заголовок',
       type: 'string',
-      validation: Rule => Rule.required().max(82).error('Допис має бути не більшим 82-ти символів'),
+      validation: (Rule) =>
+        Rule.required().max(82).error('Допис має бути не більшим 82-ти символів'),
       group: 'content',
     },
 
@@ -32,21 +32,24 @@ export default defineType({
       name: 'metaDescription',
       title: 'Мета-опис',
       type: 'string',
-      group: "content",
-      description: 'Цей опис необхідний для пошуковиків для кращого просування сайту. Це має бути розширений заголовок',
-      validation: Rule => Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
+      group: 'content',
+      description:
+        'Цей опис необхідний для пошуковиків для кращого просування сайту. Це має бути розширений заголовок',
+      validation: (Rule) =>
+        Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
     },
 
     {
       name: 'slug',
       title: 'Транслітероване відносне посилання',
       type: 'slug',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
       options: {
         source: 'newsTitle',
         maxLength: 100,
       },
-      description: 'Натисніть GENERATE і посилання автоматично сформується на основі заголовка. При потребі, ви можете його відредагувати',
+      description:
+        'Натисніть GENERATE і посилання автоматично сформується на основі заголовка. При потребі, ви можете його відредагувати',
       group: 'content',
     },
 
@@ -54,7 +57,7 @@ export default defineType({
       name: 'mainPhoto',
       title: 'Головне зображення',
       type: 'image',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
         collapsible: true,
@@ -67,21 +70,21 @@ export default defineType({
           title: 'Підпис до зображення',
         },
       ],
-      description: "Розгорніть, щоб побачити головне зображення. Також тут будуть рекомендації щодо розмірів фотографії та її пропорцій",
+      description:
+        'Розгорніть, щоб побачити головне зображення. Також тут будуть рекомендації щодо розмірів фотографії та її пропорцій',
       group: 'content',
     },
 
-
     defineField({
       name: 'publishedDate',
-      title: "Дата публікації (Опубліковано)",
+      title: 'Дата публікації (Опубліковано)',
       type: 'datetime',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
       options: {
         dateFormat: 'YYYY-MM-DD',
         timeFormat: 'HH:mm',
         timeStep: 15,
-        calendarTodayLabel: 'Today'
+        calendarTodayLabel: 'Today',
       },
       group: 'content',
     }),
@@ -92,9 +95,14 @@ export default defineType({
       title: 'Тіло публікації. Варіант для попереднього перегляду',
       type: 'text',
       rows: 4,
-      description: 'Перші кілька речень тіла публікації, які відображатимуться на сторінці з переліком усіх новин. Можна скопіювати перші кілька фраз із блоку нижче та доставити трикрапки. При цьому довжина фрази має бути більша за 115 символів, але менша за 140',
+      description:
+        'Перші кілька речень тіла публікації, які відображатимуться на сторінці з переліком усіх новин. Можна скопіювати перші кілька фраз із блоку нижче та доставити трикрапки. При цьому довжина фрази має бути більша за 115 символів, але менша за 140',
       required: true,
-      validation: Rule => Rule.required().min(115).max(140).error('Допис має бути більшим за 115 символів і менше 140-ка'),
+      validation: (Rule) =>
+        Rule.required()
+          .min(115)
+          .max(140)
+          .error('Допис має бути більшим за 115 символів і менше 140-ка'),
       group: 'content',
     },
 
@@ -103,7 +111,7 @@ export default defineType({
       title: 'Тіло публікації',
       type: 'blockContent',
       group: 'content',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
 
     // ------------------------------------------------------------
@@ -114,6 +122,16 @@ export default defineType({
       type: 'boolean',
       group: 'serviceField',
       initialValue: true,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
+      title: 'Додати в "Про кафедру / Матеріально-технічна база / Навчальні лабораторії"',
+      name: 'eduLabsBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
       options: {
         layout: 'checkbox',
       },
@@ -199,7 +217,6 @@ export default defineType({
       },
     },
 
-
     {
       title: 'Додати в "Бакалавру / Освітньо-професійні програми / Зустрічі"',
       name: 'bachelorEppMeetingsBool',
@@ -251,7 +268,6 @@ export default defineType({
       },
     },
 
-
     {
       title: 'Додати в "Магістру / Освітньо-професійні програми / Зустрічі"',
       name: 'masterEppMeetingsBool',
@@ -302,7 +318,6 @@ export default defineType({
         layout: 'checkbox',
       },
     },
-
 
     {
       title: 'Додати в "Абітурієнту / Новини для абітурієнта"',
@@ -445,7 +460,6 @@ export default defineType({
     // ----------------------------------------------------
 
     // =====================================================
-
   ],
 
   // hidden: ({ currentUser }) => {
@@ -457,16 +471,12 @@ export default defineType({
     {
       title: 'Опубліковано | Свіжіші вище',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'publishedDate', direction: 'desc' }
-      ]
+      by: [{field: 'publishedDate', direction: 'desc'}],
     },
     {
       title: 'Опубліковано | Старіші вище',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'publishedDate', direction: 'asc' }
-      ]
+      by: [{field: 'publishedDate', direction: 'asc'}],
     },
   ],
 
@@ -477,8 +487,8 @@ export default defineType({
       media: 'mainPhoto',
     },
     prepare(selection) {
-      const { newsTitle, media, publishedDate } = selection;
-      const datetime = moment(publishedDate).format("YYYY-MM-DD, HH:mm:ss");
+      const {newsTitle, media, publishedDate} = selection
+      const datetime = moment(publishedDate).format('YYYY-MM-DD, HH:mm:ss')
 
       return {
         title: newsTitle,
