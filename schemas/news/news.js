@@ -18,6 +18,48 @@ export default defineType({
       title: 'Службові поля',
     },
   ],
+  fieldsets: [
+    {
+      name: 'keyfiguresAbout',
+      title: 'КАФЕДРА',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresSpecialities',
+      title: 'СПЕЦІАЛЬНОСТІ',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresBachelor',
+      title: 'БАКАЛАВРУ',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresMaster',
+      title: 'МАГІСТРУ',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresEntrant',
+      title: 'ВСТУПНИКУ',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresScience',
+      title: 'НАУКА',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresInternActivity',
+      title: 'МІЖНАРОДНА ДІЯЛЬНІСТЬ',
+      options: {columns: 1},
+    },
+    {
+      name: 'keyfiguresEduActivity',
+      title: 'ВИХОВНА ДІЯЛЬНІСТЬ',
+      options: {columns: 1},
+    },
+  ],
   fields: [
     {
       name: 'newsTitle',
@@ -126,8 +168,9 @@ export default defineType({
         layout: 'checkbox',
       },
     },
+    // keyfiguresAbout
     {
-      title: 'Додати в "Про кафедру / Матеріально-технічна база / Навчальні лабораторії"',
+      title: 'Додати в "Кафедра / Матеріально-технічна база / Навчальні лабораторії"',
       name: 'eduLabsBool',
       type: 'boolean',
       group: 'serviceField',
@@ -135,9 +178,10 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresAbout',
     },
     {
-      title: 'Додати в "Про кафедру / Матеріально-технічна база / Семінари"',
+      title: 'Додати в "Кафедра / Матеріально-технічна база / Семінари"',
       name: 'seninarsBool',
       type: 'boolean',
       group: 'serviceField',
@@ -145,9 +189,10 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresAbout',
     },
     {
-      title: 'Додати в "Про кафедру / Матеріально-технічна база / Розробки студентів"',
+      title: 'Додати в "Кафедра / Матеріально-технічна база / Розробки студентів"',
       name: 'studentsDevsBool',
       type: 'boolean',
       group: 'serviceField',
@@ -155,6 +200,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresAbout',
     },
     {
       title: 'Додати в "Спеціальності / Наші стейкхолдери / Комунікації зі стейкхолдерами"',
@@ -165,6 +211,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresSpecialities',
     },
     {
       title: 'Додати в "Спеціальності / Практико-орієнтована освіта"',
@@ -175,6 +222,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresSpecialities',
     },
     {
       title: 'Додати в "Спеціальності / Тематичні екскурсії"',
@@ -185,6 +233,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresSpecialities',
     },
     {
       title: 'Додати в "Спеціальності / Неформальна освіта"',
@@ -195,6 +244,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresSpecialities',
     },
     {
       title: 'Додати в "Спеціальності / Дуальна освіта"',
@@ -205,6 +255,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresSpecialities',
     },
     {
       title: 'Додати в "Спеціальності / Психологічна підтримка студентів"',
@@ -215,6 +266,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresSpecialities',
     },
 
     {
@@ -226,6 +278,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresBachelor',
     },
     {
       title: 'Додати в "Бакалавру / Нормативні дисципліни"',
@@ -236,6 +289,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresBachelor',
     },
     {
       title: 'Додати в "Бакалавру / Вибіркові дисципліни"',
@@ -246,6 +300,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresBachelor',
     },
     {
       title: 'Додати в "Бакалавру / Захисти дипломних робіт бакалаврів"',
@@ -256,6 +311,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresBachelor',
     },
     {
       title: 'Додати в "Бакалавру / Академічна доброчесність"',
@@ -266,6 +322,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresBachelor',
     },
 
     {
@@ -277,6 +334,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresMaster',
     },
     {
       title: 'Додати в "Магістру / Нормативні дисципліни"',
@@ -287,6 +345,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresMaster',
     },
     {
       title: 'Додати в "Магістру / Вибіркові дисципліни"',
@@ -297,6 +356,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresMaster',
     },
     {
       title: 'Додати в "Магістру / Захисти дипломних робіт магістрів"',
@@ -307,6 +367,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresMaster',
     },
     {
       title: 'Додати в "Магістру / Академічна доброчесність"',
@@ -317,6 +378,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresMaster',
     },
 
     {
@@ -328,6 +390,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEntrant',
     },
     {
       title: 'Додати в "Абітурієнту / Співпраця зі школами"',
@@ -338,6 +401,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEntrant',
     },
     {
       title: 'Додати в "Абітурієнту / Студентські олімпіади"',
@@ -348,6 +412,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEntrant',
     },
     {
       title: 'Додати в "Абітурієнту / Відзнаки студенту',
@@ -358,6 +423,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEntrant',
     },
     {
       title: 'Додати в "Наука / Конференція “Світлотехніка й електроенергетика” / Новини розділу"',
@@ -368,6 +434,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresScience',
     },
     // -----------------------------------------------------
     // Міжнародна діяльність
@@ -380,6 +447,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresInternActivity',
     },
     {
       title: 'Додати в "Міжнародна діяльність / Міжнародна практика студентів',
@@ -390,6 +458,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresInternActivity',
     },
     {
       title: 'Додати в "Міжнародна діяльність / Міжнародне стажування',
@@ -400,6 +469,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresInternActivity',
     },
     {
       title: 'Додати в "Міжнародна діяльність / Заходи, конференції, форуми',
@@ -410,6 +480,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresInternActivity',
     },
     {
       title: 'Додати в "Міжнародна діяльність / Міжнародні програми, тренінги, проєкти',
@@ -420,6 +491,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresInternActivity',
     },
     // -----------------------------------------------------
 
@@ -434,6 +506,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEduActivity',
     },
 
     {
@@ -445,6 +518,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEduActivity',
     },
 
     {
@@ -456,6 +530,7 @@ export default defineType({
       options: {
         layout: 'checkbox',
       },
+      fieldset: 'keyfiguresEduActivity',
     },
     // ----------------------------------------------------
 
