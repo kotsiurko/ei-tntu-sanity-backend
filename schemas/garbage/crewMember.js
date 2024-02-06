@@ -1,5 +1,5 @@
 // @ts-check
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'crewMember',
@@ -20,7 +20,7 @@ export default defineType({
       name: 'person',
       title: 'Person',
       type: 'reference',
-      to: [{type: 'person'}],
+      to: [{ type: 'person' }],
     }),
     defineField({
       name: 'externalId',
@@ -41,7 +41,7 @@ export default defineType({
       media: 'person.image',
     },
     prepare(selection) {
-      const {name, job, department, media} = selection
+      const { name, job, department, media } = selection
       return {
         title: name,
         subtitle: `${job} [${department}]`,

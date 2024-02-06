@@ -198,9 +198,41 @@ export default defineType({
         layout: 'checkbox',
       },
     },
+
+
     {
-      title: 'Додати в "Магістру / Академічна доброчесність"',
-      name: 'masterAcademicHonestyBool',
+      title: 'Додати в "Бакалавру / Освітньо-професійні програми / Зустрічі"',
+      name: 'bachelorEppMeetingsBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
+      title: 'Додати в "Бакалавру / Нормативні дисципліни"',
+      name: 'bachelorNormativeDiscBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
+      title: 'Додати в "Бакалавру / Вибіркові дисципліни"',
+      name: 'bachelorElectiveDiscBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
+      title: 'Додати в "Бакалавру / Захисти дипломних робіт бакалаврів"',
+      name: 'bachelorDiplomaDefenceBool',
       type: 'boolean',
       group: 'serviceField',
       initialValue: false,
@@ -218,6 +250,8 @@ export default defineType({
         layout: 'checkbox',
       },
     },
+
+
     {
       title: 'Додати в "Магістру / Освітньо-професійні програми / Зустрічі"',
       name: 'masterEppMeetingsBool',
@@ -229,8 +263,8 @@ export default defineType({
       },
     },
     {
-      title: 'Додати в "Бакалавру / Освітньо-професійні програми / Зустрічі"',
-      name: 'bachelorEppMeetingsBool',
+      title: 'Додати в "Магістру / Нормативні дисципліни"',
+      name: 'masterNormativeDiscBool',
       type: 'boolean',
       group: 'serviceField',
       initialValue: false,
@@ -238,6 +272,38 @@ export default defineType({
         layout: 'checkbox',
       },
     },
+    {
+      title: 'Додати в "Магістру / Вибіркові дисципліни"',
+      name: 'masterElectiveDiscBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
+      title: 'Додати в "Магістру / Захисти дипломних робіт магістрів"',
+      name: 'masterDiplomaDefenceBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+    {
+      title: 'Додати в "Магістру / Академічна доброчесність"',
+      name: 'masterAcademicHonestyBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+    },
+
+
     {
       title: 'Додати в "Абітурієнту / Новини для абітурієнта"',
       name: 'newsForEntrantsBool',

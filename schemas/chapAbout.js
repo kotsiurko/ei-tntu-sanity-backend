@@ -66,6 +66,49 @@ export default defineType({
       type: 'url',
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/strategy',
     }),
+
+    defineField({
+      name: 'contacts',
+      title: 'Контакти',
+      group: "content",
+      type: 'array',
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({
+            name: 'location',
+            title: 'Заголовок блоку',
+            type: 'string',
+          }),
+          defineField({
+            name: 'address',
+            title: 'Адреса',
+            type: 'blockContent',
+          }),
+          defineField({
+            name: 'callUs',
+            title: 'Телефонуйте',
+            type: 'string',
+          }),
+          defineField({
+            name: 'mailUs',
+            title: 'Пишіть',
+            type: 'blockContent',
+          }),
+          defineField({
+            name: 'openHours',
+            title: 'Ми відкриті',
+            type: 'string',
+          }),
+          defineField({
+            name: 'src',
+            title: 'Вставити src карти',
+            type: 'url',
+          }),
+        ],
+      }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/contacts',
+    }),
   ],
 
   orderings: [
