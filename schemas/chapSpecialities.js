@@ -78,6 +78,7 @@ export default defineType({
           },
           {
             title: 'Фото',
+            description: 'Зображення рекомендується завантажувати розміром 440х280 або кратно йому. але не більше 880х560 пікселів',
             name: 'photo',
             type: 'image'
           },
@@ -91,15 +92,15 @@ export default defineType({
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/alumni',
     },
 
-    {
-      title: 'Неформальна освіта',
-      name: 'nonFormalEducation',
-      type: 'string',
-      description: "Службове поле",
-      group: "serviceField",
-      readOnly: true,
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/non-formal-education',
-    },
+    // {
+    //   title: 'Неформальна освіта',
+    //   name: 'nonFormalEducation',
+    //   type: 'string',
+    //   description: "Службове поле",
+    //   group: "serviceField",
+    //   readOnly: true,
+    //   hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/non-formal-education',
+    // },
   ],
 
   orderings: [
