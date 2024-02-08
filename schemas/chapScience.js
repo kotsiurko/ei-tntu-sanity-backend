@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
-import { MdSettingsInputAntenna as icon } from 'react-icons/md'
+import {defineField, defineType} from 'sanity'
+import {MdSettingsInputAntenna as icon} from 'react-icons/md'
 
 export default defineType({
   name: 'science',
@@ -22,30 +22,32 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: "content",
+      group: 'content',
     }),
 
     defineField({
       name: 'metaDescription',
       title: 'Мета-опис',
       type: 'string',
-      group: "content",
-      description: 'Цей опис необхідний для пошуковиків для кращого просування сайту. Коротко необхідно вказати про що дана сторінка',
-      validation: Rule => Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
+      group: 'content',
+      description:
+        'Цей опис необхідний для пошуковиків для кращого просування сайту. Коротко необхідно вказати про що дана сторінка',
+      validation: (Rule) =>
+        Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
     }),
 
     defineField({
       name: 'positionNumber',
       title: 'Порядковий номер',
       type: 'number',
-      group: "serviceField",
+      group: 'serviceField',
     }),
 
     defineField({
       name: 'slug',
       title: 'Відносне посилання URL (slug)',
       type: 'slug',
-      group: "serviceField",
+      group: 'serviceField',
       options: {
         source: 'title',
         maxLength: 100,
@@ -56,15 +58,65 @@ export default defineType({
       name: 'body',
       title: 'Структура',
       type: 'blockContent',
-      group: "content",
-      hidden: ({ document }) => document && document.slug && document.slug.current === '/science/main-scientific-publications',
+      group: 'content',
+      hidden: ({document}) =>
+        document &&
+        document.slug &&
+        document.slug.current === '/science/main-scientific-publications',
     }),
 
+    // ==========================================
+    // Сторінка Наукова діяльність студентів
+    defineField({
+      name: 'sciStudActiv',
+      title: 'Наукова діяльність студентів',
+      type: 'array',
+      group: 'content',
+      of: [
+        {
+          title: 'Список',
+          name: 'sciStudActivList',
+          type: 'document',
+          fields: [
+            {
+              title: 'Назва конференції/зьірника',
+              name: 'sciStudActivItemTitle',
+              type: 'string',
+            },
+            {
+              name: 'itemPhoto',
+              title: 'Зображення збірника',
+              type: 'image',
+              // options: {
+              //   hotspot: true,
+              //   collapsible: true,
+              //   collapsed: false,
+              // },
+              // description:
+              //   'Співвідношення сторін фото має бути 3х4, і розміром не менше як 640х850px',
+            },
+            {
+              name: 'itemUrl',
+              title: 'Посилання на збірник',
+              type: 'url',
+            },
+          ],
+        },
+      ],
+      hidden: ({document}) =>
+        document &&
+        document.slug &&
+        document.slug.current !== '/science/students-scientific-activity',
+    }),
+    // ==========================================
+
+    // ==========================================
+    // Сторінка Головні наукові публікації
     defineField({
       name: 'sciPublTypes',
       title: 'Публікації',
       type: 'array',
-      group: "content",
+      group: 'content',
       of: [
         {
           title: 'Публікації за типом',
@@ -80,30 +132,27 @@ export default defineType({
               name: 'publBody',
               title: 'Вміст, список публікацій',
               type: 'blockContent',
-            }
-          ]
-        }
-
+            },
+          ],
+        },
       ],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/science/main-scientific-publications',
+      hidden: ({document}) =>
+        document &&
+        document.slug &&
+        document.slug.current !== '/science/main-scientific-publications',
     }),
-
   ],
 
   orderings: [
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'positionNumber', direction: 'asc' }
-      ]
+      by: [{field: 'positionNumber', direction: 'asc'}],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'positionNumber', direction: 'desc' }
-      ]
+      by: [{field: 'positionNumber', direction: 'desc'}],
     },
   ],
 
@@ -114,9 +163,9 @@ export default defineType({
       slug: 'slug',
     },
     prepare(selection) {
-      console.log('selection Person:>> ', selection);
-      const { title, positionNumber, slug } = selection;
-      const sub = `${positionNumber} | ${slug.current}`;
+      console.log('selection Person:>> ', selection)
+      const {title, positionNumber, slug} = selection
+      const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,
         // media: media,
