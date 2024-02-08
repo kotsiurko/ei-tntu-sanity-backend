@@ -160,15 +160,56 @@ export default defineType({
       description: 'Цей текст йтиме після вченого звання та посади для відображення певних повноважень чи обійманих посад за сумісництвом. Напр., "головний енергетик ТОВ "Тернопільхлібпром" чи "гарант освітньої програми" тощо',
     }),
 
+    // ==== ГАРАНТ ОПП ====
+    defineField({
+      title: 'Відмітити, якщо є гарантом ОПП',
+      name: 'edGuaranteeBool',
+      type: 'boolean',
+      options: {
+        layout: 'checkbox',
+      },
+      group: 'bio',
+    }),
+
     defineField({
       name: 'edGuarantee',
       title: "Гарант освітньої програми",
       type: 'array',
-      // of: [{ type: 'text', rows: 2, }],
       of: [{ type: 'educationProgItem' }],
       description: "Натисніть Add Item, щоб додати освітню програму",
       group: 'bio',
+      hidden: ({ document }) => document && document.edGuaranteeBool !== true,
     }),
+    defineField({
+      name: 'edGuaranteeLevel',
+      title: "Гарант якого рівня освіти",
+      type: 'string',
+      options: {
+        list: [
+          'перший',
+          'другий',
+          'третій',
+        ],
+        layout: 'dropdown',
+      },
+      group: 'bio',
+      hidden: ({ document }) => document && document.edGuaranteeBool !== true,
+    }),
+
+    // defineField({
+    //   name: 'edGuaranteePhoto',
+    //   title: 'Фото як гаранта ОПП',
+    //   type: 'image',
+    //   options: {
+    //     hotspot: true,
+    //     collapsible: true,
+    //     collapsed: false,
+    //   },
+    //   description: "Співвідношення сторін фото має бути 3х4, і розміром не менше як 640х850px",
+    //   group: 'bio',
+    //   hidden: ({ document }) => document && document.edGuaranteeBool !== true,
+    // }),
+    // ==== Кінець ГАРАНТ ОПП ====
 
     defineField({
       title: 'Посилання на соцмережі',
@@ -348,6 +389,16 @@ export default defineType({
             type: 'string',
             title: 'Підпис до зображення',
           },
+          {
+            title: 'Показувати це фото на сторінці "Програми та гаранти"',
+            description: 'Увага! Для сторінки "Програми та гаранти" відмітити лише одне фото. Інакше там відображатиметься перше відмічене фото із цього списку',
+            name: 'edGuaranteeBool',
+            type: 'boolean',
+            options: {
+              layout: 'checkbox',
+            },
+            group: 'bio',
+          }
         ],
         preview: {
           select: { title: 'caption', media: 'asset', subtitle: 'attribution' },

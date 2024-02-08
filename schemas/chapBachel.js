@@ -65,7 +65,7 @@ export default defineType({
       type: 'url',
       description: 'Відображатиметься на сторінці в спеціальному переглядачі. Доступні формати pdf та docx',
       group: "content",
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/сonsultations',
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/bachelor/consultations',
     }),
 
     // СТОРІНКА "ГРАФІКИ НАВЧАЛЬНОГО ПРОЦЕСУ"
@@ -129,17 +129,17 @@ export default defineType({
 
     // Посилання на НАВЧАЛЬНІ ПЛАНИ
     {
-      title: 'НАВЧАЛЬНІ ПЛАНИ',
+      title: 'ГРАФІКИ ОСВІТНЬОГО ПРОЦЕСУ',
       name: 'eduPlanList',
       type: 'array',
       group: "content",
       of: [{
-        title: 'Навчальний план',
+        title: 'Графік',
         name: 'eduPlanItem',
         type: 'document',
         fields: [
           {
-            title: "Назва навчального плану",
+            title: "Назва графіку",
             name: 'eduPlanTitle',
             type: 'string'
           },
@@ -235,6 +235,9 @@ export default defineType({
     },
     // Кінець сторінки ПРАКТИКИ
 
+
+    // Поле docURL
+    // /bachelor/consultations
 
     {
       title: 'Відмітити, якщо заповнюєте сторінку "Академічна доброчесність"',

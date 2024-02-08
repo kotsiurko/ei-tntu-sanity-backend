@@ -91,16 +91,6 @@ export default defineType({
       }],
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/alumni',
     },
-
-    // {
-    //   title: 'Неформальна освіта',
-    //   name: 'nonFormalEducation',
-    //   type: 'string',
-    //   description: "Службове поле",
-    //   group: "serviceField",
-    //   readOnly: true,
-    //   hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/non-formal-education',
-    // },
   ],
 
   orderings: [
