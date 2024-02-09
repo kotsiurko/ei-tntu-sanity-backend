@@ -59,6 +59,70 @@ export default defineType({
       type: 'blockContent',
       group: "content",
     }),
+
+    // Сторінка 
+    // /about/material-and-technical-base/educational-labs
+    // Навчальні лабораторії
+    defineField({
+      name: 'labsList',
+      title: 'Список лабораторій',
+      group: "content",
+      type: 'array',
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({
+            name: 'labNumber',
+            title: 'Номер',
+            type: 'string',
+          }),
+          defineField({
+            name: 'labTitle',
+            title: 'Назва лабораторії (аудиторії)',
+            type: 'string',
+          }),
+          defineField({
+            name: 'labArea',
+            title: 'Площа, кв. м',
+            type: 'number',
+          }),
+          defineField({
+            name: 'labSittingPlaces',
+            title: 'Кількість місць',
+            type: 'number',
+          }),
+          defineField({
+            name: 'labChief',
+            title: 'Відповідальна особа',
+            type: 'string',
+          }),
+          defineField({
+            name: 'labChiefUrl',
+            title: 'Посилання на сторінку відповідальної особи',
+            type: 'url',
+          }),
+          defineField({
+            name: 'labDisciplines',
+            title: 'Закріплені дисципліни',
+            // Тут має бути масив дисциплін із посиланнями
+            type: 'string',
+          }),
+          // А тут має бути масив фотографій
+          defineField({
+            name: 'labPhoto',
+            title: 'Фото лабораторії',
+            type: 'image',
+            options: {
+              hotspot: true,
+              collapsible: true,
+              collapsed: false,
+            },
+          }),
+        ],
+      }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/material-and-technical-base/educational-labs',
+    }),
+
   ],
 
   orderings: [
@@ -85,12 +149,10 @@ export default defineType({
       slug: 'slug',
     },
     prepare(selection) {
-      console.log('selection Person:>> ', selection);
       const { title, positionNumber, slug } = selection;
       const sub = `${positionNumber} | ${slug.current}`;
       return {
         title: title,
-        // media: media,
         subtitle: sub,
       }
     },
