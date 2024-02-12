@@ -17,6 +17,7 @@ import chapMasterEPP from './chapMasterEPP'
 import chapBachelEPP from './chapBachelEPP'
 import chapEntrant from './chapEntrant'
 import chapScience from './chapScience'
+import chapScienceConference from './chapScienceConference'
 import chapPostgradStudy from './chapPostgradStudy'
 import chapInternatinalActivity from './chapInternatinalActivity'
 import chapEducationalActivity from './chapEducationalActivity'
@@ -56,6 +57,7 @@ export const schemaTypes = [
   chapMasterEPP,
   chapEntrant,
   chapScience,
+  chapScienceConference,
   chapPostgradStudy,
   chapInternatinalActivity,
   chapEducationalActivity,
