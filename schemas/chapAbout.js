@@ -67,6 +67,8 @@ export default defineType({
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/strategy',
     }),
 
+    // ==========================================
+    // Сторінка КОНТАКТИ
     defineField({
       name: 'contacts',
       title: 'Контакти',
@@ -109,6 +111,34 @@ export default defineType({
       }],
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/contacts',
     }),
+    // ==========================================
+
+    // ==========================================
+    // Сторінка ПОЛОЖЕННЯ
+    defineField({
+      name: 'provision',
+      title: 'Положення',
+      group: "content",
+      type: 'array',
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({
+            name: 'provisionTitle',
+            title: 'Назва документу',
+            type: 'string',
+          }),
+          defineField({
+            name: 'provisionUrl',
+            title: 'Посилання на документ',
+            type: 'url',
+          }),
+        ],
+      }],
+      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/provision',
+    }),
+    // ==========================================
+
   ],
 
   orderings: [
