@@ -104,23 +104,69 @@ export default defineType({
           defineField({
             name: 'labDisciplines',
             title: 'Закріплені дисципліни',
-            // Тут має бути масив дисциплін із посиланнями
-            type: 'string',
+            type: 'array',
+            of: [{ type: 'teachingSubjectItem' }],
+            description: "Введіть назву дисципліни, а також її ID в системі ATutor",
           }),
           // А тут має бути масив фотографій
+          // defineField({
+          //   name: 'labPhoto',
+          //   title: 'Фото лабораторії',
+          //   type: 'image',
+          //   options: {
+          //     hotspot: true,
+          //     collapsible: true,
+          //     collapsed: false,
+          //   },
+          // }),
           defineField({
-            name: 'labPhoto',
-            title: 'Фото лабораторії',
-            type: 'image',
-            options: {
-              hotspot: true,
-              collapsible: true,
-              collapsed: false,
-            },
+            name: 'labGallery',
+            title: 'Фотогалерея',
+            type: 'array',
+            description: "Тут будуть рекомендації щодо розмірів фотографії та її пропорцій",
+            of: [{
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'caption',
+                  type: 'string',
+                  title: 'Підпис до зображення',
+                },
+              ],
+              preview: {
+                select: { title: 'caption', media: 'asset', subtitle: 'attribution' },
+                prepare(selection) {
+                  const { title, media, subtitle } = selection;
+                  return {
+                    title: title,
+                    media: media,
+                    subtitle: subtitle,
+                  }
+                },
+              },
+            }],
           }),
         ],
+
+        preview: {
+          select: {
+            title: 'labTitle',
+            sub: 'labNumber',
+          },
+          prepare(selection) {
+            const { title, sub } = selection;
+            return {
+              title: title,
+              subtitle: sub,
+            }
+          },
+        },
       }],
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/material-and-technical-base/educational-labs',
+
     }),
 
   ],
