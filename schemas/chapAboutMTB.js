@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
-import { MdAccountBalance as icon } from 'react-icons/md'
+import {defineField, defineType} from 'sanity'
+import {MdAccountBalance as icon} from 'react-icons/md'
 
 export default defineType({
   name: 'about-mtb',
@@ -22,31 +22,32 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: "content",
+      group: 'content',
     }),
 
     defineField({
       name: 'metaDescription',
       title: 'Мета-опис',
       type: 'string',
-      group: "content",
-      description: 'Цей опис необхідний для пошуковиків для кращого просування сайту. Тут коротко необхідно вказати про що сторінка',
-      validation: Rule => Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
+      group: 'content',
+      description:
+        'Цей опис необхідний для пошуковиків для кращого просування сайту. Тут коротко необхідно вказати про що сторінка',
+      validation: (Rule) =>
+        Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
     }),
-
 
     defineField({
       name: 'positionNumber',
       title: 'Порядковий номер',
       type: 'number',
-      group: "serviceField",
+      group: 'serviceField',
     }),
 
     defineField({
       name: 'slug',
       title: 'Відносне посилання URL (slug)',
       type: 'slug',
-      group: "serviceField",
+      group: 'serviceField',
       options: {
         source: 'title',
         maxLength: 100,
@@ -57,134 +58,136 @@ export default defineType({
       name: 'body',
       title: 'Структура',
       type: 'blockContent',
-      group: "content",
+      group: 'content',
     }),
 
-    // Сторінка 
+    // Сторінка
     // /about/material-and-technical-base/educational-labs
     // Навчальні лабораторії
     defineField({
       name: 'labsList',
       title: 'Список лабораторій',
-      group: "content",
+      group: 'content',
       type: 'array',
-      of: [{
-        type: 'object',
-        fields: [
-          defineField({
-            name: 'labNumber',
-            title: 'Номер',
-            type: 'string',
-          }),
-          defineField({
-            name: 'labTitle',
-            title: 'Назва лабораторії (аудиторії)',
-            type: 'string',
-          }),
-          defineField({
-            name: 'labArea',
-            title: 'Площа, кв. м',
-            type: 'number',
-          }),
-          defineField({
-            name: 'labSittingPlaces',
-            title: 'Кількість місць',
-            type: 'number',
-          }),
-          defineField({
-            name: 'labChief',
-            title: 'Відповідальна особа',
-            type: 'string',
-          }),
-          defineField({
-            name: 'labChiefUrl',
-            title: 'Посилання на сторінку відповідальної особи',
-            type: 'url',
-          }),
-          defineField({
-            name: 'labDisciplines',
-            title: 'Закріплені дисципліни',
-            type: 'array',
-            of: [{ type: 'teachingSubjectItem' }],
-            description: "Введіть назву дисципліни, а також її ID в системі ATutor",
-          }),
-          // А тут має бути масив фотографій
-          // defineField({
-          //   name: 'labPhoto',
-          //   title: 'Фото лабораторії',
-          //   type: 'image',
-          //   options: {
-          //     hotspot: true,
-          //     collapsible: true,
-          //     collapsed: false,
-          //   },
-          // }),
-          defineField({
-            name: 'labGallery',
-            title: 'Фотогалерея',
-            type: 'array',
-            description: "Тут будуть рекомендації щодо розмірів фотографії та її пропорцій",
-            of: [{
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-              fields: [
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'labNumber',
+              title: 'Номер',
+              type: 'string',
+            }),
+            defineField({
+              name: 'labTitle',
+              title: 'Назва лабораторії (аудиторії)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'labArea',
+              title: 'Площа, кв. м',
+              type: 'number',
+            }),
+            defineField({
+              name: 'labSittingPlaces',
+              title: 'Кількість місць',
+              type: 'number',
+            }),
+            defineField({
+              name: 'labChief',
+              title: 'Відповідальна особа',
+              type: 'string',
+            }),
+            defineField({
+              name: 'labChiefUrl',
+              description: 'https://tntu.org.ua/',
+              title: 'Посилання на сторінку відповідальної особи',
+              type: 'url',
+            }),
+            defineField({
+              name: 'labDisciplines',
+              title: 'Закріплені дисципліни',
+              type: 'array',
+              of: [{type: 'teachingSubjectItem'}],
+              description: 'Введіть назву дисципліни, а також її ID в системі ATutor',
+            }),
+            // А тут має бути масив фотографій
+            // defineField({
+            //   name: 'labPhoto',
+            //   title: 'Фото лабораторії',
+            //   type: 'image',
+            //   options: {
+            //     hotspot: true,
+            //     collapsible: true,
+            //     collapsed: false,
+            //   },
+            // }),
+            defineField({
+              name: 'labGallery',
+              title: 'Фотогалерея',
+              type: 'array',
+              description: 'Тут будуть рекомендації щодо розмірів фотографії та її пропорцій',
+              of: [
                 {
-                  name: 'caption',
-                  type: 'string',
-                  title: 'Підпис до зображення',
+                  type: 'image',
+                  options: {
+                    hotspot: true,
+                  },
+                  fields: [
+                    {
+                      name: 'caption',
+                      type: 'string',
+                      title: 'Підпис до зображення',
+                    },
+                  ],
+                  preview: {
+                    select: {title: 'caption', media: 'asset', subtitle: 'attribution'},
+                    prepare(selection) {
+                      const {title, media, subtitle} = selection
+                      return {
+                        title: title,
+                        media: media,
+                        subtitle: subtitle,
+                      }
+                    },
+                  },
                 },
               ],
-              preview: {
-                select: { title: 'caption', media: 'asset', subtitle: 'attribution' },
-                prepare(selection) {
-                  const { title, media, subtitle } = selection;
-                  return {
-                    title: title,
-                    media: media,
-                    subtitle: subtitle,
-                  }
-                },
-              },
-            }],
-          }),
-        ],
+            }),
+          ],
 
-        preview: {
-          select: {
-            title: 'labTitle',
-            sub: 'labNumber',
-          },
-          prepare(selection) {
-            const { title, sub } = selection;
-            return {
-              title: title,
-              subtitle: sub,
-            }
+          preview: {
+            select: {
+              title: 'labTitle',
+              sub: 'labNumber',
+            },
+            prepare(selection) {
+              const {title, sub} = selection
+              return {
+                title: title,
+                subtitle: sub,
+              }
+            },
           },
         },
-      }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/material-and-technical-base/educational-labs',
-
+      ],
+      hidden: ({document}) =>
+        document &&
+        document.slug &&
+        document.slug.current !== '/about/material-and-technical-base/educational-labs',
     }),
-
   ],
 
   orderings: [
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'positionNumber', direction: 'asc' }
-      ]
+      by: [{field: 'positionNumber', direction: 'asc'}],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'positionNumber', direction: 'desc' }
-      ]
+      by: [{field: 'positionNumber', direction: 'desc'}],
     },
   ],
 
@@ -195,8 +198,8 @@ export default defineType({
       slug: 'slug',
     },
     prepare(selection) {
-      const { title, positionNumber, slug } = selection;
-      const sub = `${positionNumber} | ${slug.current}`;
+      const {title, positionNumber, slug} = selection
+      const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,
         subtitle: sub,
