@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {MdAccountBalance as icon} from 'react-icons/md'
+import { defineField, defineType } from 'sanity'
+import { MdAccountBalance as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'about-mtb',
@@ -108,25 +108,19 @@ export default defineType({
               name: 'labDisciplines',
               title: 'Закріплені дисципліни',
               type: 'array',
-              of: [{type: 'teachingSubjectItem'}],
+              of: [{ type: 'teachingSubjectItem' }],
               description: 'Введіть назву дисципліни, а також її ID в системі ATutor',
             }),
-            // А тут має бути масив фотографій
-            // defineField({
-            //   name: 'labPhoto',
-            //   title: 'Фото лабораторії',
-            //   type: 'image',
-            //   options: {
-            //     hotspot: true,
-            //     collapsible: true,
-            //     collapsed: false,
-            //   },
-            // }),
+            defineField({
+              name: 'lab3DTour',
+              title: 'Посилання на 3D тур',
+              type: 'url',
+            }),
             defineField({
               name: 'labGallery',
               title: 'Фотогалерея',
               type: 'array',
-              description: 'Тут будуть рекомендації щодо розмірів фотографії та її пропорцій',
+              // description: 'Тут будуть рекомендації щодо розмірів фотографії та її пропорцій',
               of: [
                 {
                   type: 'image',
@@ -141,9 +135,9 @@ export default defineType({
                     },
                   ],
                   preview: {
-                    select: {title: 'caption', media: 'asset', subtitle: 'attribution'},
+                    select: { title: 'caption', media: 'asset', subtitle: 'attribution' },
                     prepare(selection) {
-                      const {title, media, subtitle} = selection
+                      const { title, media, subtitle } = selection
                       return {
                         title: title,
                         media: media,
@@ -162,7 +156,7 @@ export default defineType({
               sub: 'labNumber',
             },
             prepare(selection) {
-              const {title, sub} = selection
+              const { title, sub } = selection
               return {
                 title: title,
                 subtitle: sub,
@@ -171,7 +165,7 @@ export default defineType({
           },
         },
       ],
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document &&
         document.slug &&
         document.slug.current !== '/about/material-and-technical-base/educational-labs',
@@ -182,12 +176,12 @@ export default defineType({
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [{field: 'positionNumber', direction: 'asc'}],
+      by: [{ field: 'positionNumber', direction: 'asc' }],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [{field: 'positionNumber', direction: 'desc'}],
+      by: [{ field: 'positionNumber', direction: 'desc' }],
     },
   ],
 
@@ -198,7 +192,7 @@ export default defineType({
       slug: 'slug',
     },
     prepare(selection) {
-      const {title, positionNumber, slug} = selection
+      const { title, positionNumber, slug } = selection
       const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,
