@@ -91,6 +91,25 @@ export default defineType({
       }],
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/alumni',
     },
+
+
+
+
+
+    // =========================================
+    //
+    // Сторінка Дуальна освіта
+    // 
+    // =========================================
+    {
+      title: 'Список договорів',
+      name: 'bachAgreementList',
+      type: 'array',
+      group: 'content',
+      of: [{ type: 'titleAndLinkList' }],
+      hidden: ({ document }) =>
+        document && document.slug && document.slug.current !== '/specialities/dual-education',
+    },
   ],
 
   orderings: [
