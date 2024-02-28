@@ -21,7 +21,7 @@ import chapScienceConference from './chapScienceConference'
 import chapPostgradStudy from './chapPostgradStudy'
 import chapInternatinalActivity from './chapInternatinalActivity'
 import chapEducationalActivity from './chapEducationalActivity'
-import chapReferences from './chapReferences'
+// import chapReferences from './chapReferences'
 import chapIntresting from './chapIntresting'
 import secretPage from './secretPage'
 import youtube from './youtube'
@@ -62,7 +62,7 @@ export const schemaTypes = [
   chapPostgradStudy,
   chapInternatinalActivity,
   chapEducationalActivity,
-  chapReferences,
+  // chapReferences,
   chapIntresting,
   secretPage,
   otherPages,
