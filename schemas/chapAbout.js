@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
-import { MdAccountBalance as icon } from 'react-icons/md'
+import {defineField, defineType} from 'sanity'
+import {MdAccountBalance as icon} from 'react-icons/md'
 
 export default defineType({
   name: 'about',
@@ -22,30 +22,32 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: "content",
+      group: 'content',
     }),
 
     defineField({
       name: 'metaDescription',
       title: 'Мета-опис',
       type: 'string',
-      group: "content",
-      description: 'Цей опис необхідний для пошуковиків для кращого просування сайту. Коротко необхідно вказати про що дана сторінка',
-      validation: Rule => Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
+      group: 'content',
+      description:
+        'Цей опис необхідний для пошуковиків для кращого просування сайту. Коротко необхідно вказати про що дана сторінка',
+      validation: (Rule) =>
+        Rule.required().max(180).error('Опис має бути не більшим 180-ти символів'),
     }),
 
     defineField({
       name: 'positionNumber',
       title: 'Порядковий номер',
       type: 'number',
-      group: "serviceField",
+      group: 'serviceField',
     }),
 
     defineField({
       name: 'slug',
       title: 'Відносне посилання URL (slug)',
       type: 'slug',
-      group: "serviceField",
+      group: 'serviceField',
       options: {
         source: 'title',
         maxLength: 100,
@@ -56,15 +58,16 @@ export default defineType({
       name: 'body',
       title: 'Структура',
       type: 'blockContent',
-      group: "content",
+      group: 'content',
     }),
 
     defineField({
       name: 'docURL',
       title: 'Посилання на електронний документ',
-      group: "content",
+      group: 'content',
       type: 'url',
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/strategy',
+      hidden: ({document}) =>
+        document && document.slug && document.slug.current !== '/about/strategy',
     }),
 
     // ==========================================
@@ -72,44 +75,47 @@ export default defineType({
     defineField({
       name: 'contacts',
       title: 'Контакти',
-      group: "content",
+      group: 'content',
       type: 'array',
-      of: [{
-        type: 'object',
-        fields: [
-          defineField({
-            name: 'location',
-            title: 'Заголовок блоку',
-            type: 'string',
-          }),
-          defineField({
-            name: 'address',
-            title: 'Адреса',
-            type: 'blockContent',
-          }),
-          defineField({
-            name: 'callUs',
-            title: 'Телефонуйте',
-            type: 'string',
-          }),
-          defineField({
-            name: 'mailUs',
-            title: 'Пишіть',
-            type: 'blockContent',
-          }),
-          defineField({
-            name: 'openHours',
-            title: 'Ми відкриті',
-            type: 'string',
-          }),
-          defineField({
-            name: 'src',
-            title: 'Вставити src карти',
-            type: 'url',
-          }),
-        ],
-      }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/contacts',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'location',
+              title: 'Заголовок блоку',
+              type: 'string',
+            }),
+            defineField({
+              name: 'address',
+              title: 'Адреса',
+              type: 'blockContent',
+            }),
+            defineField({
+              name: 'callUs',
+              title: 'Телефонуйте',
+              type: 'string',
+            }),
+            defineField({
+              name: 'mailUs',
+              title: 'Пишіть',
+              type: 'blockContent',
+            }),
+            defineField({
+              name: 'openHours',
+              title: 'Ми відкриті',
+              type: 'string',
+            }),
+            defineField({
+              name: 'src',
+              title: 'Вставити src карти',
+              type: 'url',
+            }),
+          ],
+        },
+      ],
+      hidden: ({document}) =>
+        document && document.slug && document.slug.current !== '/about/contacts',
     }),
     // ==========================================
 
@@ -118,43 +124,41 @@ export default defineType({
     defineField({
       name: 'provision',
       title: 'Положення',
-      group: "content",
+      group: 'content',
       type: 'array',
-      of: [{
-        type: 'object',
-        fields: [
-          defineField({
-            name: 'provisionTitle',
-            title: 'Назва документу',
-            type: 'string',
-          }),
-          defineField({
-            name: 'provisionUrl',
-            title: 'Посилання на документ',
-            type: 'url',
-          }),
-        ],
-      }],
-      hidden: ({ document }) => document && document.slug && document.slug.current !== '/about/provision',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'provisionTitle',
+              title: 'Назва документу',
+              type: 'string',
+            }),
+            defineField({
+              name: 'provisionUrl',
+              title: 'Посилання на документ',
+              type: 'url',
+            }),
+          ],
+        },
+      ],
+      hidden: ({document}) =>
+        document && document.slug && document.slug.current !== '/about/provision',
     }),
     // ==========================================
-
   ],
 
   orderings: [
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'positionNumber', direction: 'asc' }
-      ]
+      by: [{field: 'positionNumber', direction: 'asc'}],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [
-        { field: 'positionNumber', direction: 'desc' }
-      ]
+      by: [{field: 'positionNumber', direction: 'desc'}],
     },
   ],
 
@@ -165,8 +169,8 @@ export default defineType({
       slug: 'slug',
     },
     prepare(selection) {
-      const { title, positionNumber, slug } = selection;
-      const sub = `${positionNumber} | ${slug.current}`;
+      const {title, positionNumber, slug} = selection
+      const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,
         subtitle: sub,

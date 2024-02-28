@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
-import { MdSentimentNeutral as icon } from 'react-icons/md'
+import {defineField, defineType} from 'sanity'
+import {MdSentimentNeutral as icon} from 'react-icons/md'
 
 export default defineType({
   name: 'bachelor',
@@ -86,12 +86,25 @@ export default defineType({
           ],
         },
       ],
-      hidden: ({ document }) =>
-        document &&
-        document.slug &&
-        document.slug.current !== '/bachelor/educational-plans',
+      hidden: ({document}) =>
+        document && document.slug && document.slug.current !== '/bachelor/educational-plans',
     }),
     // ==============================================
+
+    // ==========================================
+    // Сторінка МЕТОДИЧНІ РЕКОМЕНДАЦІЇ ДО КУРСОВИХ ПРОЕКТІВ
+    defineField({
+      name: 'blankList',
+      title: 'Методичні рекомендації до курсових проєктів',
+      group: 'content',
+      type: 'array',
+      of: [{type: 'titleAndLinkList'}],
+      hidden: ({document}) =>
+        document &&
+        document.slug &&
+        document.slug.current !== '/bachelor/methodological-recommendations-for-courseworks',
+    }),
+    // ==========================================
 
     // ==============================================
     // СТОРІНКА КОНСУЛЬТАЦІЇ
@@ -102,10 +115,25 @@ export default defineType({
       description:
         'Відображатиметься на сторінці в спеціальному переглядачі. Доступні формати pdf та docx',
       group: 'content',
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document && document.slug && document.slug.current !== '/bachelor/consultations',
     }),
     // ==============================================
+
+    // ==========================================
+    // Сторінка ВИКОНАННЯ КВАЛІФІКАЦІЙНИХ РОБІТ БАКАЛАВРІВ
+    defineField({
+      name: 'docsForBachThesisList',
+      title: 'Необхідні документи для виконання кваліфікаційних робіт бакалавра',
+      group: 'content',
+      type: 'array',
+      of: [{type: 'titleAndLinkList'}],
+      hidden: ({document}) =>
+        document &&
+        document.slug &&
+        document.slug.current !== '/bachelor/performance-of-qualification-works-of-bachelors',
+    }),
+    // ==========================================
 
     // ==============================================
     // СТОРІНКА "ГРАФІКИ НАВЧАЛЬНОГО ПРОЦЕСУ"
@@ -116,7 +144,7 @@ export default defineType({
       name: 'lessonDuration',
       type: 'number',
       group: 'content',
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document &&
         document.slug &&
         document.slug.current !== '/bachelor/schedules-of-educational-process',
@@ -138,7 +166,7 @@ export default defineType({
       ],
       description:
         'У випадаючому вікні слід обирати лише час, на дату можна не зважати. Дату можна залишити будь-якою, вона на сайті не відображатиметься. Відображається лише час',
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document &&
         document.slug &&
         document.slug.current !== '/bachelor/schedules-of-educational-process',
@@ -153,7 +181,7 @@ export default defineType({
       group: 'content',
       description:
         'Текст відображається під заголовком і зазначає період для якого генерується графік. напр.: "Осінній семестр 2023-2024 навчального року"',
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document &&
         document.slug &&
         document.slug.current !== '/bachelor/schedules-of-educational-process',
@@ -165,7 +193,7 @@ export default defineType({
       type: 'number',
       group: 'content',
       description: 'Для осіннього семестру може бути 14 тижнів, для весняного - 18 тощо',
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document &&
         document.slug &&
         document.slug.current !== '/bachelor/schedules-of-educational-process',
@@ -178,7 +206,7 @@ export default defineType({
       group: 'content',
       description:
         'Зверніть увагу, що неділя у випадаючому календарі - початок тижня, тому уважно обирайте понеділок - Mon. Таблиця генеруватиметься автоматично, відштовхуючись від цієї дати',
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document &&
         document.slug &&
         document.slug.current !== '/bachelor/schedules-of-educational-process',
@@ -210,7 +238,7 @@ export default defineType({
           ],
         },
       ],
-      hidden: ({ document }) =>
+      hidden: ({document}) =>
         document &&
         document.slug &&
         document.slug.current !== '/bachelor/schedules-of-educational-process',
@@ -219,9 +247,9 @@ export default defineType({
     // ==============================================
 
     // ==============================================
-    // 
+    //
     // Сторінка ПРАКТИКИ
-    // 
+    //
     // ==============================================
     {
       title: 'Список практик',
@@ -230,8 +258,8 @@ export default defineType({
       group: 'content',
       description:
         'Порядок відображення практик можна змінювати вручну переміщенням елементів поміж собою. Для зручності, розміщуйте І курс (денники, заочники, іноземці). дальше ІІ курс і так далі...',
-      of: [{ type: 'practiceItem' }],
-      hidden: ({ document }) =>
+      of: [{type: 'practiceItem'}],
+      hidden: ({document}) =>
         document && document.slug && document.slug.current !== '/bachelor/practices',
     },
     // Кінець сторінки ПРАКТИКИ
@@ -252,12 +280,12 @@ export default defineType({
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [{ field: 'positionNumber', direction: 'asc' }],
+      by: [{field: 'positionNumber', direction: 'asc'}],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [{ field: 'positionNumber', direction: 'desc' }],
+      by: [{field: 'positionNumber', direction: 'desc'}],
     },
   ],
 
@@ -269,7 +297,7 @@ export default defineType({
     },
     prepare(selection) {
       console.log('selection Person:>> ', selection)
-      const { title, positionNumber, slug } = selection
+      const {title, positionNumber, slug} = selection
       const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,
