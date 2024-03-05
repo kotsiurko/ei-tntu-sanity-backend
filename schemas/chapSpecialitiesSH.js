@@ -69,7 +69,23 @@ export default defineType({
       hidden: ({ document }) => document && document.slug && document.slug.current !== '/specialities/stakeholders/principles',
       // specialities/stakeholders/principles
     }),
-    // hidden: ({ document }) => document && document.slug && document.slug.current !== '/master/academic-honesty',
+
+    // -----------------
+
+    // =========================================
+    //
+    // Сторінка Договори про співпрацю
+    // 
+    // =========================================
+    {
+      title: 'Список договорів',
+      name: 'coopAgreementList',
+      type: 'array',
+      group: 'content',
+      of: [{ type: 'titleAndLinkList' }],
+      hidden: ({ document }) =>
+        document && document.slug && document.slug.current !== '/specialities/stakeholders/cooperation-agreements',
+    },
   ],
 
   orderings: [
