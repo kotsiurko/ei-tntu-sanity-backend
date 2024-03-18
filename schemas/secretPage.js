@@ -84,10 +84,28 @@ export default defineType({
               title: 'Посилання на документ',
               type: 'string',
             },
-          ]
+          ],
+
+          preview: {
+            select: {
+              title: 'docTitle',
+              publishedDate: 'publishedDate',
+              docNumber: 'docNumber',
+            },
+            prepare(selection) {
+              const { title, publishedDate, docNumber } = selection;
+
+              return {
+                title: `${title}`,
+                // media: media,
+                subtitle: `Опубліковано ${publishedDate} | № ${docNumber}`,
+              }
+            },
+          },
         }
 
-      ]
+      ],
+
     }),
   ],
 
