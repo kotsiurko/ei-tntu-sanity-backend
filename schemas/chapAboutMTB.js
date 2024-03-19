@@ -62,7 +62,7 @@ export default defineType({
     }),
 
     // Сторінка
-    // /about/material-and-technical-base/educational-labs
+    // /about/material-and-technical-base/educational-classrooms
     // Навчальні лабораторії
     defineField({
       name: 'labsList',
@@ -80,7 +80,7 @@ export default defineType({
             }),
             defineField({
               name: 'labTitle',
-              title: 'Назва лабораторії (аудиторії)',
+              title: 'Назва аудиторії',
               type: 'string',
             }),
             defineField({
@@ -168,7 +168,7 @@ export default defineType({
       hidden: ({ document }) =>
         document &&
         document.slug &&
-        document.slug.current !== '/about/material-and-technical-base/educational-labs',
+        document.slug.current !== '/about/material-and-technical-base/educational-classrooms',
     }),
   ],
 

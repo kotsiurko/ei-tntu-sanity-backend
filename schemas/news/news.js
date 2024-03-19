@@ -170,7 +170,7 @@ export default defineType({
     },
     // keyfiguresAbout
     {
-      title: 'Додати в "Кафедра / Матеріально-технічна база / Навчальні лабораторії"',
+      title: 'Додати в "Кафедра / Матеріально-технічна база / Навчальні аудиторії"',
       name: 'eduLabsBool',
       type: 'boolean',
       group: 'serviceField',
