@@ -348,6 +348,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'contactEmail',
+      title: "Електронна пошта",
+      type: 'string',
+      description: "Введіть університетський поштовий email",
+      group: 'bio',
+    }),
+
+    defineField({
       title: 'Колишній працівник',
       name: 'formerEmployeeBool',
       type: 'boolean',
@@ -473,13 +481,6 @@ export default defineType({
     //   name: 'bio',
     //   title: 'Біографія',
     //   type: 'blockContent',
-    // }),
-
-    // defineField({
-    //   name: 'contacts',
-    //   title: "Контакти",
-    //   type: 'string',
-    //   description: "Введіть контактні дані (здебільшого, це email)",
     // }),
 
     // ============================
