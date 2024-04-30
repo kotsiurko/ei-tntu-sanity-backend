@@ -77,6 +77,12 @@ export default defineType({
           type: 'object',
           fields: [
             {
+              title: "Посилання",
+              name: 'customURL',
+              type: 'slug',
+              validation: Rule => Rule.required(),
+            },
+            {
               title: "Прізвище",
               name: 'heroName',
               type: 'string',

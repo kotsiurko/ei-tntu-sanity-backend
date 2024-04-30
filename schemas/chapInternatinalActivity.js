@@ -59,6 +59,21 @@ export default defineType({
       group: "content",
     }),
 
+    // ==========================================
+    // Сторінка МІЖНАРОДНІ ПРОГРАМИ, ТРЕНІНГИ ТА ПРОЄКТИ
+    defineField({
+      name: 'intProgsTrainsAndProjects',
+      title: 'Міжнародні програми, тренінги, проєкти',
+      group: 'content',
+      type: 'array',
+      of: [{ type: 'imageTextItems' }],
+      hidden: ({ document }) =>
+        document &&
+        document.slug &&
+        document.slug.current !== '/international-activity/programs-trainings-projects',
+    }),
+    // ==========================================
+
   ],
 
   orderings: [

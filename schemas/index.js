@@ -32,6 +32,8 @@ import educationProgItem from './person/educationProgItem'
 import practiceItem from './shared/practiceItem'
 import otherPages from './chapOtherPages'
 import titleAndLinkList from './shared/titleAndLinkList'
+import imageTextItems from './shared/imageTextItems'
+
 // import siteSettings from './siteSettings'
 // import deskStructure from './deskStructure'
 
@@ -70,6 +72,7 @@ export const schemaTypes = [
   // shared
   practiceItem,
   titleAndLinkList,
+  imageTextItems,
 
   // Other types
   blockContent,
