@@ -62,6 +62,15 @@ export default defineType({
     }),
 
     defineField({
+      name: 'gender',
+      title: "Стать",
+      type: 'string',
+      options: { list: ['чоловіча', 'жіноча'], layout: 'radio', direction: 'horizontal' },
+      initialValue: "чоловіча",
+      group: 'bio',
+    }),
+
+    defineField({
       name: 'mainPhoto',
       title: 'Головне зображення',
       type: 'image',
