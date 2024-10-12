@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {MdAccountBalance as icon} from 'react-icons/md'
+import { defineField, defineType } from 'sanity'
+import { MdAccountBalance as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'about',
@@ -56,7 +56,7 @@ export default defineType({
 
     defineField({
       name: 'body',
-      title: 'Структура',
+      title: 'Текстовий вміст сторінки',
       type: 'blockContent',
       group: 'content',
     }),
@@ -66,7 +66,7 @@ export default defineType({
       title: 'Посилання на електронний документ',
       group: 'content',
       type: 'url',
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document && document.slug && document.slug.current !== '/about/strategy',
     }),
 
@@ -114,7 +114,7 @@ export default defineType({
           ],
         },
       ],
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document && document.slug && document.slug.current !== '/about/contacts',
     }),
     // ==========================================
@@ -143,7 +143,7 @@ export default defineType({
           ],
         },
       ],
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document && document.slug && document.slug.current !== '/about/provision',
     }),
     // ==========================================
@@ -153,12 +153,12 @@ export default defineType({
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [{field: 'positionNumber', direction: 'asc'}],
+      by: [{ field: 'positionNumber', direction: 'asc' }],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [{field: 'positionNumber', direction: 'desc'}],
+      by: [{ field: 'positionNumber', direction: 'desc' }],
     },
   ],
 
@@ -169,7 +169,7 @@ export default defineType({
       slug: 'slug',
     },
     prepare(selection) {
-      const {title, positionNumber, slug} = selection
+      const { title, positionNumber, slug } = selection
       const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,

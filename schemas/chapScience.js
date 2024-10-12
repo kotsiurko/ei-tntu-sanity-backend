@@ -1,5 +1,5 @@
-import {defineField, defineType} from 'sanity'
-import {MdSettingsInputAntenna as icon} from 'react-icons/md'
+import { defineField, defineType } from 'sanity'
+import { MdSettingsInputAntenna as icon } from 'react-icons/md'
 
 export default defineType({
   name: 'science',
@@ -56,10 +56,10 @@ export default defineType({
 
     defineField({
       name: 'body',
-      title: 'Структура',
+      title: 'Текстовий вміст сторінки',
       type: 'blockContent',
       group: 'content',
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document &&
         document.slug &&
         document.slug.current === '/science/main-scientific-publications',
@@ -103,7 +103,7 @@ export default defineType({
           ],
         },
       ],
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document &&
         document.slug &&
         document.slug.current !== '/science/students-scientific-activity',
@@ -136,7 +136,7 @@ export default defineType({
           ],
         },
       ],
-      hidden: ({document}) =>
+      hidden: ({ document }) =>
         document &&
         document.slug &&
         document.slug.current !== '/science/main-scientific-publications',
@@ -147,12 +147,12 @@ export default defineType({
     {
       title: 'Порядковий номер | Зростання',
       name: 'publishedDateSorting',
-      by: [{field: 'positionNumber', direction: 'asc'}],
+      by: [{ field: 'positionNumber', direction: 'asc' }],
     },
     {
       title: 'Порядковий номер | Спадання',
       name: 'publishedDateSorting',
-      by: [{field: 'positionNumber', direction: 'desc'}],
+      by: [{ field: 'positionNumber', direction: 'desc' }],
     },
   ],
 
@@ -164,7 +164,7 @@ export default defineType({
     },
     prepare(selection) {
       console.log('selection Person:>> ', selection)
-      const {title, positionNumber, slug} = selection
+      const { title, positionNumber, slug } = selection
       const sub = `${positionNumber} | ${slug.current}`
       return {
         title: title,

@@ -54,7 +54,7 @@ export default defineType({
 
     defineField({
       name: 'body',
-      title: 'Структура',
+      title: 'Текстовий вміст сторінки',
       type: 'blockContent',
       group: "content",
     }),
@@ -80,7 +80,8 @@ export default defineType({
             title: 'Фото',
             description: 'Зображення рекомендується завантажувати розміром 440х280 або кратно йому. але не більше 880х560 пікселів',
             name: 'photo',
-            type: 'image'
+            type: 'image',
+            validation: (Rule) => Rule.required(),
           },
           {
             name: 'body',

@@ -56,7 +56,7 @@ export default defineType({
 
     defineField({
       name: 'body',
-      title: 'Структура',
+      title: 'Текстовий вміст сторінки',
       type: 'blockContent',
       group: 'content',
     }),
