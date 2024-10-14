@@ -58,6 +58,17 @@ export default defineType({
       title: 'Текстовий вміст сторінки',
       type: 'blockContent',
       group: "content",
+      readOnly: ({ document }) => document && document.slug && document.slug.current === '/bachelor/educational-and-professional-programs/strategy',
+    }),
+
+    defineField({
+      name: 'remark',
+      title: 'Увага! Вказівка для редакторів!',
+      type: 'text',
+      group: "content",
+      readOnly: true,
+      rows: 8,
+      hidden: ({ document }) => document && document.slug && document.slug.current === '/bachelor/educational-and-professional-programs/strategy',
     }),
 
     // defineField({
