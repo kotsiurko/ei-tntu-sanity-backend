@@ -67,7 +67,7 @@ export default defineType({
       group: "content",
       readOnly: true,
       rows: 8,
-      hidden: ({ document }) => document && document.slug && document.slug.current === '/master/educational-and-professional-programs/strategy',
+      hidden: ({ document }) => (document && document.slug && document.slug.current === '/master/educational-and-professional-programs/strategy') || (document && document.slug && document.slug.current === '/master/educational-and-professional-programs/epp-improvement'),
     }),
 
     // defineField({
