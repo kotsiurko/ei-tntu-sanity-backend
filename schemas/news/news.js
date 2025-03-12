@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
-import { MdAccountBalance as icon } from 'react-icons/md'
+import {defineField, defineType} from 'sanity'
+import {MdAccountBalance as icon} from 'react-icons/md'
 import moment from 'moment/moment'
 
 export default defineType({
@@ -22,42 +22,42 @@ export default defineType({
     {
       name: 'keyfiguresAbout',
       title: 'КАФЕДРА',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresSpecialities',
       title: 'СПЕЦІАЛЬНОСТІ',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresBachelor',
       title: 'БАКАЛАВРУ',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresMaster',
       title: 'МАГІСТРУ',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresEntrant',
       title: 'ВСТУПНИКУ',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresScience',
       title: 'НАУКА',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresInternActivity',
       title: 'МІЖНАРОДНА ДІЯЛЬНІСТЬ',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
     {
       name: 'keyfiguresEduActivity',
       title: 'ВИХОВНА ДІЯЛЬНІСТЬ',
-      options: { columns: 1 },
+      options: {columns: 1},
     },
   ],
   fields: [
@@ -201,6 +201,17 @@ export default defineType({
         layout: 'checkbox',
       },
       fieldset: 'keyfiguresAbout',
+    },
+    {
+      title: 'Додати в "Спеціальності / Випускники кафедри"',
+      name: 'alumniBool',
+      type: 'boolean',
+      group: 'serviceField',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      },
+      fieldset: 'keyfiguresSpecialities',
     },
     {
       title: 'Додати в "Спеціальності / Наші стейкхолдери / Комунікації зі стейкхолдерами"',
@@ -557,12 +568,12 @@ export default defineType({
     {
       title: 'Опубліковано | Свіжіші вище',
       name: 'publishedDateSorting',
-      by: [{ field: 'publishedDate', direction: 'desc' }],
+      by: [{field: 'publishedDate', direction: 'desc'}],
     },
     {
       title: 'Опубліковано | Старіші вище',
       name: 'publishedDateSorting',
-      by: [{ field: 'publishedDate', direction: 'asc' }],
+      by: [{field: 'publishedDate', direction: 'asc'}],
     },
   ],
 
@@ -573,7 +584,7 @@ export default defineType({
       media: 'mainPhoto',
     },
     prepare(selection) {
-      const { newsTitle, media, publishedDate } = selection
+      const {newsTitle, media, publishedDate} = selection
       const datetime = moment(publishedDate).format('YYYY-MM-DD, HH:mm:ss')
 
       return {
